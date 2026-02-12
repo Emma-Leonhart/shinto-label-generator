@@ -78,6 +78,7 @@ BASE_MAP = {
     "ta": "ta", "chi": "si", "tsu": "tu", "tu": "tu", "te": "te", "to": "to",
     "na": "na", "ni": "ni", "nu": "nu", "ne": "ne", "no": "no",
     "ma": "ma", "mi": "mi", "mu": "mu", "me": "me", "mo": "mo",
+    "pa": "pa", "pi": "pi", "pu": "pu", "pe": "pe", "po": "po",
     "ya": "ja", "yu": "ju", "yo": "jo",
     "ra": "la", "ri": "li", "ru": "lu", "re": "le", "ro": "lo",
     "wa": "wa", "wo": "wo",
