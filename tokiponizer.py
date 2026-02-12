@@ -112,7 +112,7 @@ DIPTHONGS = {
     "aa": "a", "ai": "a", "au": "a", "ae": "awe", "ao": "o",
     "ia": "ija", "ii": "i", "iu": "iju", "ie": "ije", "io": "ijo",
     "ua": "uwa", "ui": "uwi", "uu": "u", "ue": "uwe", "uo": "o",
-    "ea": "e", "ei": "e", "eu": "e", "ee": "e", "eo": "ejo",
+    "ea": "eja", "ei": "e", "eu": "eju", "ee": "e", "eo": "ejo",
     "oa": "owa", "oi": "owi", "ou": "o", "oe": "owe", "oo": "o",
 }
 

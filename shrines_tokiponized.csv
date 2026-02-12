@@ -57,7 +57,7 @@ Q488935,Chōsen Jingū,朝鮮神宮,Kuil Agung Chosen,Kuil Agung,chosen,Tejosen,
 Q653180,Fujisan Hongū Sengen Taisha,富士山本宮浅間大社,Kuil Agung Fujisan Hongu Sengen,Kuil Agung,fujisanhongusengen,Pusisanponkusenken,tomo sewi suli Pusisanponkusenken
 Q714828,Fushimi Inari-taisha,伏見稲荷大社,Kuil Agung Fushimi Inari,Kuil Agung,fushimiinari,Pusiminali,tomo sewi suli Pusiminali
 Q11246131,Fuyo Jingū,扶余神宮,Kuil Agung Fuyo,Kuil Agung,fuyo,Pujo,tomo sewi suli Pujo
-Q385141,Heian Jingū,平安神宮,Kuil Agung Heian,Kuil Agung,heian,Ken,tomo sewi suli Ken
+Q385141,Heian Jingū,平安神宮,Kuil Agung Heian,Kuil Agung,heian,Kejan,tomo sewi suli Kejan
 Q11616915,Hikosan Jingū,英彦山神宮,Kuil Agung Hikosan,Kuil Agung,hikosan,Kikosan,tomo sewi suli Kikosan
 Q888184,Hinokuma Jingū,日前神宮・國懸神宮,Kuil Agung Hinokuma,Kuil Agung,hinokuma,Kinokuma,tomo sewi suli Kinokuma
 Q656451,Hiyoshi Taisha,日吉大社,Kuil Agung Hiyoshi,Kuil Agung,hiyoshi,Kijosi,tomo sewi suli Kijosi
@@ -1326,7 +1326,7 @@ Q117808981,Chiyoda Inari Shrine,千代田稲荷神社,Kuil Chiyoda Inari,Kuil,ch
 Q98843491,Chiyogaoka Tsubaki Shrine,千代ヶ丘椿神社,Kuil Chiyogaoka Tsubaki,Kuil,chiyogaokatsubaki,Sijokokatupaki,tomo sewi Sijokokatupaki
 Q11405256,Chiyoho Inari Shrine,千代保稲荷神社,Kuil Chiyoho Inari,Kuil,chiyohoinari,Sijopowinali,tomo sewi Sijopowinali
 Q108133410,Chiyoho Inari Shrine Nagoya Branch,千代保稲荷神社名古屋支所,Kuil Chiyoho Inari Nagoya Branch,Kuil,chiyohoinarinagoyabranch,Sijopowinalinakojalan,tomo sewi Sijopowinalinakojalan
-Q135186735,Chota Great Camphor Tree,長太の大楠,Kuil Chota Great Camphor Tree,Kuil,chotagreatcamphortree,Tejotalepole,tomo sewi Tejotalepole
+Q135186735,Chota Great Camphor Tree,長太の大楠,Kuil Chota Great Camphor Tree,Kuil,chotagreatcamphortree,Tejotalejapole,tomo sewi Tejotalejapole
 Q10874940,Chuureki Shrine,中レキ神社,Kuil Chuureki,Kuil,chuureki,Tejuleki,tomo sewi Tejuleki
 Q11653578,Chōjasan Shinra Shrine,長者山新羅神社,Kuil Chōjasan Shinra,Kuil,chōjasanshinra,Tejosijasansinla,tomo sewi Tejosijasansinla
 Q11675030,Chōkai Gassan Ryōsho-gu,鳥海月山両所宮,Kuil Chōkai Gassan Ryōsho-gu,Kuil,chōkaigassanryōshogu,Tejokakasanliyosijoku,tomo sewi Tejokakasanliyosijoku
@@ -4856,7 +4856,7 @@ Q11526478,Higashi Ōjima Shrine,東大島神社,Kuil Higashi Ōjima,Kuil,higashi
 Q11528773,Higashi-Kōzu-gū,東高津宮,Kuil Higashi-Kōzu-gū,Kuil,higashikōzugū,Kikasikosuku,tomo sewi Kikasikosuku
 Q131274481,Higashiakaohachimangū,東赤尾八幡宮,Kuil Higashiakaohachimangū,Kuil,higashiakaohachimangū,Kikasijakopasimanku,tomo sewi Kikasijakopasimanku
 Q22120080,Higashibata Shrine,東畑神社,Kuil Higashibata,Kuil,higashibata,Kikasipata,tomo sewi Kikasipata
-Q134887391,Higashibeppu Shrine,東別府神社,Kuil Higashibeppu,Kuil,higashibeppu,Kikasipe,tomo sewi Kikasipe
+Q134887391,Higashibeppu Shrine,東別府神社,Kuil Higashibeppu,Kuil,higashibeppu,Kikasipeju,tomo sewi Kikasipeju
 Q135198154,Higashikamo Shrine,東鴨神社,Kuil Higashikamo,Kuil,higashikamo,Kikasikamo,tomo sewi Kikasikamo
 Q135070353,Tsumakirishima Shrine,東霧島神社,Kuil Higashikirishima,Kuil,higashikirishima,Kikasikilisima,tomo sewi Kikasikilisima
 Q134886206,Higashinissai Shrine,東入西神社,Kuil Higashinissai,Kuil,higashinissai,Kikasinisa,tomo sewi Kikasinisa
@@ -4889,7 +4889,7 @@ Q11500716,Hii Shrine,斐伊神社,Kuil Hii,Kuil,hii,Ki,tomo sewi Ki
 Q135099008,Hiinohayahikono Shrine,同社坐斐伊波夜比古神社,Kuil Hiinohayahikono,Kuil,hiinohayahikono,Kinopajapikono,tomo sewi Kinopajapikono
 Q135186319,"Hiji Shrine (Iwanai Village, Taki District)",火地神社（多気郡岩内村）,"Kuil Hiji (Iwanai, Taki)",Kuil,hiji,Kisi,tomo sewi Kisi
 Q125319212,Hiji Wakamiya Hachiman Shrine,日出若宮八幡神社,Kuil Hiji Wakamiya Hachiman,Kuil,hijiwakamiyahachiman,Kisiwakamijapasiman,tomo sewi Kisiwakamijapasiman
-Q60441200,Hijieagata Shrine,泥江縣神社,Kuil Hijieagata,Kuil,hijieagata,Kisijekata,tomo sewi Kisijekata
+Q60441200,Hijieagata Shrine,泥江縣神社,Kuil Hijieagata,Kuil,hijieagata,Kisijejakata,tomo sewi Kisijejakata
 Q11611103,Hijiri Shrine,聖神社,Kuil Hijiri,Kuil,hijiri,Kisili,tomo sewi Kisili
 Q11611104,Hijiri Shrine,聖神社,Kuil Hijiri,Kuil,hijiri,Kisili,tomo sewi Kisili
 Q55532159,Hijiri Shrine,聖神社,Kuil Hijiri,Kuil,hijiri,Kisili,tomo sewi Kisili
@@ -7485,13 +7485,13 @@ Q135433708,Ise Shrine,伊勢神社,Kuil Ise,Kuil,ise,Ise,tomo sewi Ise
 Q135433519,Ise Shrine,伊勢神社,Kuil Ise,Kuil,ise,Ise,tomo sewi Ise
 Q135433520,Ise Shrine,伊勢神社,Kuil Ise,Kuil,ise,Ise,tomo sewi Ise
 Q135433731,Ise Shrine,伊勢神社,Kuil Ise,Kuil,ise,Ise,tomo sewi Ise
-Q135070347,Ise Amaterasu Mioya Shrine,伊勢天照御祖神社,Kuil Ise Amaterasu Mioya,Kuil,iseamaterasumioya,Isematelasumijoja,tomo sewi Isematelasumijoja
+Q135070347,Ise Amaterasu Mioya Shrine,伊勢天照御祖神社,Kuil Ise Amaterasu Mioya,Kuil,iseamaterasumioya,Isejamatelasumijoja,tomo sewi Isejamatelasumijoja
 Q135070346,Ise Mioya Shrine,伊勢御祖神社,Kuil Ise Mioya,Kuil,isemioya,Isemijoja,tomo sewi Isemijoja
 Q135153883,Ise Shinmeisha Shrine,伊勢神明社,Kuil Ise Shinmeisha,Kuil,iseshinmeisha,Isesinmesija,tomo sewi Isesinmesija
 Q135194417,Ise-no-Miya (nonexistent),伊勢宮（現在無し）,Kuil Ise-no-Miya (nonexistent),Kuil,isenomiya,Isenomija,tomo sewi Isenomija
 Q11378979,Ise-oomikami Shrine Kaminomiya,伊勢大御神 (南相馬市),Kuil Ise-oomikami Kaminomiya,Kuil,iseoomikamikaminomiya,Isejomikamikaminomija,tomo sewi Isejomikamikaminomija
-Q135041474,Iseamaterasumioyano Shrine,伊勢天照御祖神社,Kuil Iseamaterasumioyano,Kuil,iseamaterasumioyano,Isematelasumijojano,tomo sewi Isematelasumijojano
-Q134988946,Iseasahiyamahongū Shrine,伊勢朝日山本宮,Kuil Iseasahiyamahongū,Kuil,iseasahiyamahongū,Isesapijamaponku,tomo sewi Isesapijamaponku
+Q135041474,Iseamaterasumioyano Shrine,伊勢天照御祖神社,Kuil Iseamaterasumioyano,Kuil,iseamaterasumioyano,Isejamatelasumijojano,tomo sewi Isejamatelasumijojano
+Q134988946,Iseasahiyamahongū Shrine,伊勢朝日山本宮,Kuil Iseasahiyamahongū,Kuil,iseasahiyamahongū,Isejasapijamaponku,tomo sewi Isejasapijamaponku
 Q106852486,Isebe Kakimoto Shrine,伊勢部柿本神社,Kuil Isebe Kakimoto,Kuil,isebekakimoto,Isepekakimoto,tomo sewi Isepekakimoto
 Q135418989,Isedera Shrine,伊勢寺神,Kuil Isedera,Kuil,isedera,Isetela,tomo sewi Isetela
 Q11378955,Isehara Daijingu,伊勢原大神宮,Kuil Isehara Daijingu,Kuil,iseharadaijingu,Isepalatasinku,tomo sewi Isepalatasinku
@@ -7865,7 +7865,7 @@ Q30933522,Iwanai Shrine,岩内神社,Kuil Iwanai,Kuil,iwanai,Iwana,tomo sewi Iwa
 Q119929452,Iwane Shrine,岩根神社,Kuil Iwane,Kuil,iwane,Iwane,tomo sewi Iwane
 Q120682029,Iwane Shrine,磐根神社,Kuil Iwane,Kuil,iwane,Iwane,tomo sewi Iwane
 Q135260188,Iwane Shrine,磐根神社,Kuil Iwane,Kuil,iwane,Iwane,tomo sewi Iwane
-Q11475213,Iwaneaswa Sanzan Shrine,岩根沢三山神社,Kuil Iwaneaswa sanzan,Kuil,iwaneaswasanzan,Iwanewasansan,tomo sewi Iwanewasansan
+Q11475213,Iwaneaswa Sanzan Shrine,岩根沢三山神社,Kuil Iwaneaswa sanzan,Kuil,iwaneaswasanzan,Iwanejawasansan,tomo sewi Iwanejawasansan
 Q135040746,Iwano Shrine,伊和神社,Kuil Iwano,Kuil,iwano,Iwano,tomo sewi Iwano
 Q111024066,Iwanoken Shrine,岩野見社,Kuil Iwanoken,Kuil,iwanoken,Iwanoken,tomo sewi Iwanoken
 Q11379658,Iwanonishi Shrine,伊波乃西神社,Kuil Iwanonishi,Kuil,iwanonishi,Iwanonisi,tomo sewi Iwanonisi
@@ -15135,7 +15135,7 @@ Q124496683,Ozato Hachiman Shrine,大里八幡神社,Kuil Ozato Hachiman,Kuil,oza
 Q11459557,Ozeki Shrine,小塞神社,Kuil Ozeki,Kuil,ozeki,Oseki,tomo sewi Oseki
 Q134887052,Ozone Shrine,小曽根神社,Kuil Ozone,Kuil,ozone,Osone,tomo sewi Osone
 Q133857941,Peking Shrine,北京神社,Kuil Peking,Kuil,peking,Ekin,tomo sewi Ekin
-Q11337484,Peleliu Shrine,ペリリュー神社,Kuil Peleliu,Kuil,peleliu,E,tomo sewi E
+Q11337484,Peleliu Shrine,ペリリュー神社,Kuil Peleliu,Kuil,peleliu,Eju,tomo sewi Eju
 Q124483190,Sanctuaire de l'aviation (Tokorozawa),航空神社,Kuil Penerbangan (Tokorozawa),Kuil,penerbangan,Enepankan,tomo sewi Enepankan
 Q11565821,Penghu Shrine,澎湖神社,Kuil Penghu,Kuil,penghu,Enpu,tomo sewi Enpu
 Q97013995,Penghu Shrine,澎湖神社,Kuil Penghu,Kuil,penghu,Enpu,tomo sewi Enpu
@@ -15205,7 +15205,7 @@ Q130425667,Raiden-sha,雷電社,Kuil Raiden-sha,Kuil,raidensha,Latensija,tomo se
 Q135192964,Raiden-sha (sessha),摂社 雷電社,Kuil Raiden-sha (sessha),Kuil,raidensha,Latensija,tomo sewi Latensija
 Q11660683,Reikyū Shrine,霊丘神社,Kuil Reikyū,Kuil,reikyū,Lekiju,tomo sewi Lekiju
 Q11660689,Reikōden Tenmangū,霊光殿天満宮,Kuil Reikōden Tenmangū,Kuil,reikōdentenmangū,Lekotentenmanku,tomo sewi Lekotentenmanku
-Q22120874,Retsureppu Shrine,烈々布神社,Kuil Retsureppu,Kuil,retsureppu,Letule,tomo sewi Letule
+Q22120874,Retsureppu Shrine,烈々布神社,Kuil Retsureppu,Kuil,retsureppu,Letuleju,tomo sewi Letuleju
 Q11398393,Rikishi Shrine,力侍神社,Kuil Rikishi,Kuil,rikishi,Likisi,tomo sewi Likisi
 Q97014170,Riko Shrine,里港神社,Kuil Riko,Kuil,riko,Liko,tomo sewi Liko
 Q135040043,Rikukotano Shrine,理訓許段神社,Kuil Rikukotano,Kuil,rikukotano,Likukotano,tomo sewi Likukotano
@@ -15868,7 +15868,7 @@ Q119929730,Sata Shrine,佐田神社,Kuil Sata,Kuil,sata,Sata,tomo sewi Sata
 Q135195042,Sata Shrine,佐多神社,Kuil Sata,Kuil,sata,Sata,tomo sewi Sata
 Q135040421,Sata Shrine,佐多神社,Kuil Sata,Kuil,sata,Sata,tomo sewi Sata
 Q65248733,Sata-tenjingu,佐太天神宮,Kuil Sata-tenjingu,Kuil,satatenjingu,Satatensinku,tomo sewi Satatensinku
-Q111906159,Satake Akiba Shrine,佐竹秋葉神社,Kuil Satake Akiba,Kuil,satakeakiba,Satakekipa,tomo sewi Satakekipa
+Q111906159,Satake Akiba Shrine,佐竹秋葉神社,Kuil Satake Akiba,Kuil,satakeakiba,Satakejakipa,tomo sewi Satakejakipa
 Q113667160,Satake Inari Shrine,佐竹稲荷神社,Kuil Satake Inari,Kuil,satakeinari,Satakenali,tomo sewi Satakenali
 Q97201845,Satake Inari Shrine,佐竹稲荷神社,Kuil Satake Inari,Kuil,satakeinari,Satakenali,tomo sewi Satakenali
 Q17225991,Satakunari Shrine,狭田国生神社,Kuil Satakunari,Kuil,satakunari,Satakunali,tomo sewi Satakunali
@@ -15899,7 +15899,7 @@ Q135069638,Sazae Shrine (Ōmi Province),小江神社,Kuil Sazae (Ōmi),Kuil,saza
 Q134956921,Sazagi Shrine,雀神社,Kuil Sazagi,Kuil,sazagi,Sasaki,tomo sewi Sasaki
 Q11606084,Sazareishi Shrine,細石神社,Kuil Sazareishi,Kuil,sazareishi,Sasalesi,tomo sewi Sasalesi
 Q119929599,Seiban Shrine,青坂神社,Kuil Seiban,Kuil,seiban,Sepan,tomo sewi Sepan
-Q11574891,Seicho-No-Ie Uji Bekkaku Honzan,生長の家宇治別格本山,Kuil Seicho-No-Ie Uji Bekkaku Honzan,Kuil,seichonoieujibekkakuhonzan,Setejonowijesipekakuponsan,tomo sewi Setejonowijesipekakuponsan
+Q11574891,Seicho-No-Ie Uji Bekkaku Honzan,生長の家宇治別格本山,Kuil Seicho-No-Ie Uji Bekkaku Honzan,Kuil,seichonoieujibekkakuhonzan,Setejonowijejusipekakuponsan,tomo sewi Setejonowijejusipekakuponsan
 Q119929436,Seichū Shrine,精忠神社,Kuil Seichū,Kuil,seichū,Seteju,tomo sewi Seteju
 Q111744589,Seigirei-sha,正義霊社,Kuil Seigirei-sha,Kuil,seigireisha,Sekilesija,tomo sewi Sekilesija
 Q276830,Seimei Shrine,晴明神社,Kuil Seimei,Kuil,seimei,Seme,tomo sewi Seme
@@ -18104,7 +18104,7 @@ Q135040091,Subeno Shrine,恵比須神社,Kuil Subeno,Kuil,subeno,Supeno,tomo sew
 Q135039234,Suchiarakino Shrine,須智荒木神社,Kuil Suchiarakino,Kuil,suchiarakino,Susijalakino,tomo sewi Susijalakino
 Q135038801,Suchino Shrine,朱智神社,Kuil Suchino,Kuil,suchino,Susino,tomo sewi Susino
 Q11477104,Sudō Shrine,崇道神社,Kuil Sudō,Kuil,sudō,Suto,tomo sewi Suto
-Q11658473,Suearata Shrine,陶荒田神社,Kuil Suearata,Kuil,suearata,Suwelata,tomo sewi Suwelata
+Q11658473,Suearata Shrine,陶荒田神社,Kuil Suearata,Kuil,suearata,Suwejalata,tomo sewi Suwejalata
 Q111838589,Suehiro Shrine,末廣神社,Kuil Suehiro,Kuil,suehiro,Suwepilo,tomo sewi Suwepilo
 Q131919961,Suehiro Shrine,末廣神社,Kuil Suehiro,Kuil,suehiro,Suwepilo,tomo sewi Suwepilo
 Q132571311,Suehiro Shrine,末廣神社,Kuil Suehiro,Kuil,suehiro,Suwepilo,tomo sewi Suwepilo
@@ -20226,7 +20226,7 @@ Q135039580,Tadaki Shinmeigu,神明宮 (浜松市只木),Kuil Tadaki Shinmeigu,Ku
 Q56347778,Tadanomoto Shrine,多田野本神社,Kuil Tadanomoto,Kuil,tadanomoto,Tatanomoto,tomo sewi Tatanomoto
 Q111024461,Tadasu Shrine,糺神社,Kuil Tadasu,Kuil,tadasu,Tatasu,tomo sewi Tatasu
 Q135505779,Tadasu Shrine,糺神社,Kuil Tadasu,Kuil,tadasu,Tatasu,tomo sewi Tatasu
-Q85882438,Tadeuga Shrine,田出宇賀神社,Kuil Tadeuga,Kuil,tadeuga,Tateka,tomo sewi Tateka
+Q85882438,Tadeuga Shrine,田出宇賀神社,Kuil Tadeuga,Kuil,tadeuga,Tatejuka,tomo sewi Tatejuka
 Q134989413,Tadokoro Shrine,田所神社,Kuil Tadokoro,Kuil,tadokoro,Tatokolo,tomo sewi Tatokolo
 Q135070192,Tadouraza Shrine,田土浦坐神社,Kuil Tadouraza,Kuil,tadouraza,Tatolasa,tomo sewi Tatolasa
 Q11430670,Tafuke Ōji Shrine,多富気王子,Kuil Tafuke Ōji,Kuil,tafukeōji,Tapukejosi,tomo sewi Tapukejosi
@@ -20603,7 +20603,7 @@ Q135039274,Take Shrine,竹神社,Kuil Take,Kuil,take,Take,tomo sewi Take
 Q135041448,Take Shrine,多気坂本神社,Kuil Take,Kuil,take,Take,tomo sewi Take
 Q135200387,Take Shrine,嶽神,Kuil Take,Kuil,take,Take,tomo sewi Take
 Q135041375,Take- Shrine,建比売神社,Kuil Take-,Kuil,take,Take,tomo sewi Take
-Q135069440,Takeasa Shrine,竹麻神社,Kuil Takeasa,Kuil,takeasa,Takesa,tomo sewi Takesa
+Q135069440,Takeasa Shrine,竹麻神社,Kuil Takeasa,Kuil,takeasa,Takejasa,tomo sewi Takejasa
 Q119929432,Takebuyama Shrine,健武山神社,Kuil Takebuyama,Kuil,takebuyama,Takepujama,tomo sewi Takepujama
 Q135041272,Takechi-Ishiuchi-no-Mikoto Shrine,武智石打命神,Kuil Takechi-Ishiuchi-no-Mikoto,Kuil,takechiishiuchinomikoto,Takesisijusinomikoto,tomo sewi Takesisijusinomikoto
 Q43594646,Takechino Miagata Shrine,高市御県神社,Kuil Takechino Miagata,Kuil,takechinomiagata,Takesinomijakata,tomo sewi Takesinomijakata
@@ -20670,10 +20670,10 @@ Q135197919,Takeshima Shrine,竹島神社,Kuil Takeshima,Kuil,takeshima,Takesima,
 Q124728621,Takeshino Shrine,武野神社,Kuil Takeshino,Kuil,takeshino,Takesino,tomo sewi Takesino
 Q135039030,Taketano Shrine,竹田神社 (橿原市),Kuil Taketano,Kuil,taketano,Taketano,tomo sewi Taketano
 Q114237475,Taketsuka Shrine,竹塚神社,Kuil Taketsuka,Kuil,taketsuka,Taketuka,tomo sewi Taketuka
-Q24862515,Takeuchi Shrine,武内神社,Kuil Takeuchi,Kuil,takeuchi,Takesi,tomo sewi Takesi
-Q66085129,Takeuchi Shrine,武内神社,Kuil Takeuchi,Kuil,takeuchi,Takesi,tomo sewi Takesi
-Q97218316,Takeuchi Shrine,竹内神社,Kuil Takeuchi,Kuil,takeuchi,Takesi,tomo sewi Takesi
-Q134596157,Takeuchi Shrine,武内神社,Kuil Takeuchi,Kuil,takeuchi,Takesi,tomo sewi Takesi
+Q24862515,Takeuchi Shrine,武内神社,Kuil Takeuchi,Kuil,takeuchi,Takejusi,tomo sewi Takejusi
+Q66085129,Takeuchi Shrine,武内神社,Kuil Takeuchi,Kuil,takeuchi,Takejusi,tomo sewi Takejusi
+Q97218316,Takeuchi Shrine,竹内神社,Kuil Takeuchi,Kuil,takeuchi,Takejusi,tomo sewi Takejusi
+Q134596157,Takeuchi Shrine,武内神社,Kuil Takeuchi,Kuil,takeuchi,Takejusi,tomo sewi Takejusi
 Q135041484,Takewoshimokorihikono Shrine,建男霜凝日子神社,Kuil Takewoshimokorihikono,Kuil,takewoshimokorihikono,Takewosimokolipikono,tomo sewi Takewosimokolipikono
 Q135434314,Takeya Shrine,竹屋神社,Kuil Takeya,Kuil,takeya,Takeja,tomo sewi Takeja
 Q135433928,Takeyama Shrine,竹山神社,Kuil Takeyama,Kuil,takeyama,Takejama,tomo sewi Takejama
