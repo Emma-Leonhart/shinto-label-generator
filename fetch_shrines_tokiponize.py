@@ -21,6 +21,7 @@ SPARQL_QUERY = """
 SELECT DISTINCT ?item ?itemLabel ?idLabel ?jaLabel WHERE {
   ?item wdt:P31/wdt:P279* wd:Q845945 .
   ?item rdfs:label ?idLabel . FILTER(LANG(?idLabel) = "id")
+  FILTER NOT EXISTS { ?item rdfs:label ?tokLabel . FILTER(LANG(?tokLabel) = "tok") }
   OPTIONAL { ?item rdfs:label ?jaLabel . FILTER(LANG(?jaLabel) = "ja") }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }

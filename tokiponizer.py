@@ -51,10 +51,10 @@ KANA_ROMAJI = {
     "が": "ga", "ぎ": "gi", "ぐ": "gu", "げ": "ge", "ご": "go",
     "ぎゃ": "gya", "ぎゅ": "gyu", "ぎょ": "gyo",
 
-    "ざ": "za", "じ": "ji", "ず": "zu", "ぜ": "ze", "ぞ": "zo",
+    "ざ": "za", "じ": "ji", "ず": "su", "ぜ": "ze", "ぞ": "zo",
     "じゃ": "ja", "じゅ": "ju", "じょ": "jo",
 
-    "だ": "da", "ぢ": "ji", "づ": "zu", "で": "de", "ど": "do",
+    "だ": "da", "ぢ": "ji", "づ": "tu", "で": "de", "ど": "do",
     "ぢゃ": "ja", "ぢゅ": "ju", "ぢょ": "jo",
 
     "ば": "ba", "び": "bi", "ぶ": "bu", "べ": "be", "ぼ": "bo",
@@ -73,13 +73,22 @@ BASE_MAP = {
 
     "ka": "ka", "ki": "ki", "ku": "ku", "ke": "ke", "ko": "ko",
     "sa": "sa", "shi": "si", "su": "su", "se": "se", "so": "so",
-    "ta": "ta", "chi": "si", "tsu": "tu", "te": "te", "to": "to",
+    "ta": "ta", "chi": "si", "tsu": "tu", "tu": "tu", "te": "te", "to": "to",
     "na": "na", "ni": "ni", "nu": "nu", "ne": "ne", "no": "no",
     "ma": "ma", "mi": "mi", "mu": "mu", "me": "me", "mo": "mo",
     "ya": "ja", "yu": "ju", "yo": "jo",
     "ra": "la", "ri": "li", "ru": "lu", "re": "le", "ro": "lo",
     "wa": "wa", "wo": "wo",
     "n": "n",
+
+    # Voiced consonants (mapped to their unvoiced Toki Pona equivalents)
+    "ga": "ka", "gi": "ki", "gu": "ku", "ge": "ke", "go": "ko",
+    "za": "sa", "ji": "si", "zu": "su", "ze": "se", "zo": "so",
+    "da": "ta", "di": "si", "du": "tu", "de": "te", "do": "to",
+    "ba": "pa", "bi": "pi", "bu": "pu", "be": "pe", "bo": "po",
+
+    # H-consonants (will be processed positionally: word-initial→k, elsewhere→p)
+    "ha": "ha", "hi": "hi", "hu": "pu", "fu": "pu", "he": "he", "ho": "ho",
 }
 
 YOON_MAP = {
@@ -115,7 +124,20 @@ def normalize(text: str) -> str:
     text = re.sub(r"[^\w]", "", text)
     return text
 
+def katakana_to_hiragana(text: str) -> str:
+    """Convert katakana characters to hiragana (offset of 0x60)."""
+    result = []
+    for char in text:
+        code = ord(char)
+        # Katakana range: U+30A0 to U+30FF, Hiragana: U+3040 to U+309F
+        if 0x30A1 <= code <= 0x30F6:
+            result.append(chr(code - 0x60))
+        else:
+            result.append(char)
+    return "".join(result)
+
 def kana_to_romaji(text: str) -> str:
+    text = katakana_to_hiragana(text)
     out = ""
     i = 0
     while i < len(text):
@@ -141,13 +163,27 @@ def tokenize_romaji(text: str):
     while i < len(text):
         for size in (3, 2, 1):
             chunk = text[i:i+size]
-            if chunk in YOON_MAP or chunk in BASE_MAP or chunk == "zu":
+            if chunk in YOON_MAP or chunk in BASE_MAP:
                 tokens.append(chunk)
                 i += size
                 break
         else:
             i += 1
     return tokens
+
+def apply_h_position(syllables: list) -> list:
+    """Apply positional h→k/p rule: word-initial h→k, elsewhere h→p."""
+    result = []
+    for i, syl in enumerate(syllables):
+        if syl.startswith("h"):
+            if i == 0:
+                # Word-initial: h → k
+                syl = "k" + syl[1:]
+            else:
+                # Elsewhere: h → p
+                syl = "p" + syl[1:]
+        result.append(syl)
+    return result
 
 def tokiponize(text: str):
     text = normalize(text)
@@ -156,29 +192,20 @@ def tokiponize(text: str):
 
     tokens = tokenize_romaji(text)
 
-    variants = [[]]
-
+    syllables = []
     for t in tokens:
         if t in YOON_MAP:
-            for v in variants:
-                v.append(YOON_MAP[t])
-        elif t == "zu":
-            new = []
-            for v in variants:
-                new.append(v + ["su"])
-                new.append(v + ["tu"])
-            variants = new
+            syllables.append(YOON_MAP[t])
         elif t in BASE_MAP:
-            for v in variants:
-                v.append(BASE_MAP[t])
+            syllables.append(BASE_MAP[t])
 
-    outputs = []
-    for v in variants:
-        word = "".join(v)
-        word = word.capitalize()
-        outputs.append(word)
+    # Apply positional h→k/p rule
+    syllables = apply_h_position(syllables)
 
-    return sorted(set(outputs))
+    word = "".join(syllables)
+    word = word.capitalize()
+
+    return [word] if word else []
 
 # ----------------------------
 # Example
