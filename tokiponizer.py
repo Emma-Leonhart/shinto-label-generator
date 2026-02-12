@@ -70,6 +70,8 @@ KANA_ROMAJI = {
 
 BASE_MAP = {
     "a": "a", "i": "i", "u": "u", "e": "e", "o": "o",
+    # Macron vowels (long vowels in romanization)
+    "ā": "a", "ī": "i", "ū": "u", "ē": "e", "ō": "o",
 
     "ka": "ka", "ki": "ki", "ku": "ku", "ke": "ke", "ko": "ko",
     "sa": "sa", "shi": "si", "su": "su", "se": "se", "so": "so",
@@ -122,6 +124,8 @@ def normalize(text: str) -> str:
     text = unicodedata.normalize("NFKC", text)
     text = text.lower()
     text = re.sub(r"[^\w]", "", text)
+    # Normalize macron vowels to base vowels (long vowels treated same as short)
+    text = text.replace("ā", "a").replace("ī", "i").replace("ū", "u").replace("ē", "e").replace("ō", "o")
     return text
 
 def katakana_to_hiragana(text: str) -> str:
