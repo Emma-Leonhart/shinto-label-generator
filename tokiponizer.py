@@ -112,7 +112,7 @@ DIPTHONGS = {
     "aa": "a", "ai": "a", "au": "a", "ae": "awe", "ao": "o",
     "ia": "ija", "ii": "i", "iu": "iju", "ie": "ije", "io": "ijo",
     "ua": "uwa", "ui": "uwi", "uu": "u", "ue": "uwe", "uo": "o",
-    "ea": "e", "ei": "e", "eu": "e", "ee": "e", "eo": "e",
+    "ea": "e", "ei": "e", "eu": "e", "ee": "e", "eo": "ejo",
     "oa": "owa", "oi": "owi", "ou": "o", "oe": "owe", "oo": "o",
 }
 
@@ -156,10 +156,35 @@ def kana_to_romaji(text: str) -> str:
             i += 1
     return out
 
-def apply_dipthongs(text: str) -> str:
-    for k, v in DIPTHONGS.items():
-        text = text.replace(k, v)
-    return text
+def apply_dipthongs_to_syllables(syllables: list) -> list:
+    """Apply diphthong rules to adjacent vowel endings/beginnings in syllable list."""
+    if not syllables:
+        return syllables
+
+    result = [syllables[0]]
+    for syl in syllables[1:]:
+        prev = result[-1]
+        # Check if previous syllable ends with vowel and current starts with vowel
+        if prev and syl:
+            prev_end = prev[-1] if prev[-1] in "aeiou" else None
+            curr_start = syl[0] if syl[0] in "aeiou" else None
+
+            if prev_end and curr_start:
+                pair = prev_end + curr_start
+                if pair in DIPTHONGS:
+                    # Replace the vowel ending + vowel start with diphthong result
+                    new_prev = prev[:-1] + DIPTHONGS[pair]
+                    # If current syllable was just a vowel, it's consumed
+                    if len(syl) == 1:
+                        result[-1] = new_prev
+                        continue
+                    else:
+                        # Current syllable had more after the vowel (shouldn't happen for pure vowels)
+                        result[-1] = new_prev
+                        result.append(syl[1:])
+                        continue
+        result.append(syl)
+    return result
 
 def tokenize_romaji(text: str):
     tokens = []
@@ -192,7 +217,6 @@ def apply_h_position(syllables: list) -> list:
 def tokiponize(text: str):
     text = normalize(text)
     text = kana_to_romaji(text)
-    text = apply_dipthongs(text)
 
     tokens = tokenize_romaji(text)
 
@@ -205,6 +229,9 @@ def tokiponize(text: str):
 
     # Apply positional h→k/p rule
     syllables = apply_h_position(syllables)
+
+    # Apply diphthong rules to adjacent vowels
+    syllables = apply_dipthongs_to_syllables(syllables)
 
     word = "".join(syllables)
     word = word.capitalize()
