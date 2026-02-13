@@ -1,9 +1,4 @@
-Q65291930	Ltok	"tomo sewi Atakaja"
-Q11451521	Ltok	"tomo sewi Atatala"
-Q11658004	Ltok	"tomo sewi Awe"
-Q17190840	Ltok	"tomo sewi Awetopasipime"
-Q11499487	Ltok	"tomo sewi Awekuni"
-Q134957407	Ltok	"tomo sewi Awemonsijowinali"
+
 Q65260948	Ltok	"tomo sewi Apusi"
 Q135186246	Ltok	"tomo sewi Apukako"
 Q135039287	Ltok	"tomo sewi Apukakotano"
