@@ -84,6 +84,14 @@ def make_tokipona_label(prefix, tokiponized_name):
     else:
         return f"tomo sewi {tokiponized_name}"
 
+def write_quickstatements(rows, outfile="quickstatements.txt"):
+    """Write QuickStatements lines: QID<TAB>Ltok<TAB>\"label\"."""
+    with open(outfile, "w", encoding="utf-8", newline="\n") as f:
+        for row in rows:
+            label = row["toki_pona_label"].replace('"', '""')
+            f.write(f'{row["qid"]}\tLtok\t"{label}"\n')
+    return outfile
+
 def main():
     results = fetch_shrines()
 
@@ -146,6 +154,9 @@ def main():
 
     print(f"\nDone! Wrote {len(rows)} rows to {outfile}")
     print(f"Skipped {skipped} entries (no Kuil/Kuil Agung prefix)")
+
+    qs_outfile = write_quickstatements(rows)
+    print(f"Wrote {len(rows)} QuickStatements lines to {qs_outfile}")
 
     # Print first few for quick review
     print("\n--- Sample output ---")

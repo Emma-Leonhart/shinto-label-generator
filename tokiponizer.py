@@ -42,7 +42,7 @@ KANA_ROMAJI = {
     "りゃ": "rya", "りゅ": "ryu", "りょ": "ryo",
 
     # w
-    "わ": "wa", "を": "wo",
+    "わ": "wa", "ゐ": "wi", "ゑ": "we", "を": "wo",
 
     # n
     "ん": "n",
@@ -81,7 +81,7 @@ BASE_MAP = {
     "pa": "pa", "pi": "pi", "pu": "pu", "pe": "pe", "po": "po",
     "ya": "ja", "yu": "ju", "yo": "jo",
     "ra": "la", "ri": "li", "ru": "lu", "re": "le", "ro": "lo",
-    "wa": "wa", "wo": "wo",
+    "wa": "wa", "wi": "wi", "we": "we", "wo": "o",
     "n": "n",
 
     # Voiced consonants (mapped to their unvoiced Toki Pona equivalents)
