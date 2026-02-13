@@ -1,6 +1,8 @@
 """
-Fetch Shinto shrines with Indonesian labels from Wikidata,
-strip bracket content, remove Kuil/Kuil Agung prefix,
+Fetch Japan shrine/temple items with Indonesian labels from Wikidata:
+- Shinto shrines (instance/subclass path of Q845945), plus
+- Buddhist temples in Japan (P31=Q5393308 and P17=Q17).
+Then strip bracket content, remove Kuil/Kuil Agung prefix,
 tokiponize the remaining Japanese name, and produce
 tomo sewi [suli] NAME output.
 """
@@ -19,7 +21,14 @@ SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 
 SPARQL_QUERY = """
 SELECT DISTINCT ?item ?itemLabel ?idLabel ?jaLabel WHERE {
-  ?item wdt:P31/wdt:P279* wd:Q845945 .
+  {
+    ?item wdt:P31/wdt:P279* wd:Q845945 .
+  }
+  UNION
+  {
+    ?item wdt:P31 wd:Q5393308 .
+    ?item wdt:P17 wd:Q17 .
+  }
   ?item rdfs:label ?idLabel . FILTER(LANG(?idLabel) = "id")
   FILTER NOT EXISTS { ?item rdfs:label ?tokLabel . FILTER(LANG(?tokLabel) = "tok") }
   OPTIONAL { ?item rdfs:label ?jaLabel . FILTER(LANG(?jaLabel) = "ja") }
@@ -29,8 +38,8 @@ ORDER BY ?idLabel
 """
 
 def fetch_shrines():
-    """Fetch all Shinto shrines with Indonesian labels from Wikidata."""
-    print("Querying Wikidata SPARQL for Shinto shrines with Indonesian labels...")
+    """Fetch target shrine/temple items with Indonesian labels from Wikidata."""
+    print("Querying Wikidata SPARQL for Shinto shrines + Japan Buddhist temples with Indonesian labels...")
     r = requests.get(
         SPARQL_ENDPOINT,
         params={"query": SPARQL_QUERY, "format": "json"},
