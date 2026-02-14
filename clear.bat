@@ -4,7 +4,7 @@ cd /d "%~dp0"
 
 cls
 echo ==========================================
-echo Full clear run: Indonesian without tok
+echo Full clear run: Indonesian shrine/temple set
 echo ==========================================
 echo.
 
@@ -23,5 +23,5 @@ if errorlevel 1 (
 )
 
 echo.
-echo Pipeline complete. Output: shrines_tokiponized.csv
+echo Pipeline complete. Output: shrines_tokiponized.csv + quickstatements.txt
 exit /b 0
