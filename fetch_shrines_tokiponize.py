@@ -126,13 +126,28 @@ def make_tokipona_label(prefix, tokiponized_name):
     else:
         return f"tomo sewi {tokiponized_name}"
 
-def write_quickstatements(rows, outfile="quickstatements.txt"):
-    """Write QuickStatements lines: QID<TAB>Ltok<TAB>\"label\"."""
-    with open(outfile, "w", encoding="utf-8", newline="\n") as f:
-        for row in rows:
-            label = row["toki_pona_label"].replace('"', '""')
-            f.write(f'{row["qid"]}\tLtok\t"{label}"\n')
-    return outfile
+def write_quickstatements(rows, outdir="quickstatements"):
+    """Write QuickStatements lines split by language into outdir/.
+    Each file contains: QID<TAB>L<lang><TAB>\"label\".
+    Returns dict of {lang: filepath} for files written."""
+    import os
+    os.makedirs(outdir, exist_ok=True)
+
+    # Group rows by target language
+    by_lang = {}
+    for row in rows:
+        lang = row.get("target_lang", "tok")
+        by_lang.setdefault(lang, []).append(row)
+
+    written = {}
+    for lang, lang_rows in sorted(by_lang.items()):
+        filepath = os.path.join(outdir, f"{lang}.txt")
+        with open(filepath, "w", encoding="utf-8", newline="\n") as f:
+            for row in lang_rows:
+                label = row["toki_pona_label"].replace('"', '""')
+                f.write(f'{row["qid"]}\tL{lang}\t"{label}"\n')
+        written[lang] = filepath
+    return written
 
 def main():
     results = fetch_shrines()
@@ -192,6 +207,7 @@ def main():
                 "source_label": source_label,
                 "prefix": prefix,
                 "cleaned_input": cleaned_name,
+                "target_lang": "tok",
                 "tokiponized": variant,
                 "toki_pona_label": tp_label,
                 "has_tok_label": has_tok_label,
@@ -203,8 +219,8 @@ def main():
     with open(outfile, "w", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
             "qid", "en_label", "ja_label", "source_lang", "source_label",
-            "prefix", "cleaned_input", "tokiponized", "toki_pona_label",
-            "has_tok_label", "existing_tok_labels",
+            "target_lang", "prefix", "cleaned_input", "tokiponized",
+            "toki_pona_label", "has_tok_label", "existing_tok_labels",
         ])
         writer.writeheader()
         writer.writerows(rows)
@@ -213,8 +229,10 @@ def main():
     print(f"Skipped {skipped} entries (no supported source-language prefix)")
 
     qs_rows = [row for row in rows if not row["has_tok_label"]]
-    qs_outfile = write_quickstatements(qs_rows)
-    print(f"Wrote {len(qs_rows)} QuickStatements lines to {qs_outfile}")
+    written = write_quickstatements(qs_rows)
+    for lang, filepath in written.items():
+        count = sum(1 for r in qs_rows if r.get("target_lang", "tok") == lang)
+        print(f"Wrote {count} QuickStatements lines to {filepath}")
 
     # Print first few for quick review
     print("\n--- Sample output ---")
