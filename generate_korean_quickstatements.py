@@ -2,10 +2,8 @@
 Generate Korean (ko) labels for Shinto shrines and Buddhist temples.
 
 Two paths:
-- Japan shrines (P17=Q17): Indonesian label → strip prefix → koreanize → append Korean suffix
-- Non-Japan shrines: Japanese label (kanji) → hanja.translate() for sino-Korean reading
-
-Fallback: if a Japan shrine has no Indonesian label, use hanja path on Japanese label.
+- Japan shrines with Indonesian labels: strip prefix → koreanize → append Korean suffix
+- All other shrines with Japanese labels: hanja.translate() for sino-Korean reading
 
 Output: quickstatements/ko.txt
 """
@@ -27,8 +25,9 @@ elif hasattr(sys.stdout, 'encoding') and sys.stdout.encoding != 'utf-8':
 
 SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 
-SPARQL_QUERY = """
-SELECT DISTINCT ?item ?jaLabel ?idLabel ?country WHERE {
+# Query 1: Japan shrines with Indonesian labels (for koreanize path)
+SPARQL_ID = """
+SELECT DISTINCT ?item ?idLabel ?jaLabel WHERE {
   {
     ?item wdt:P31/wdt:P279* wd:Q845945 .
   }
@@ -37,11 +36,27 @@ SELECT DISTINCT ?item ?jaLabel ?idLabel ?country WHERE {
     ?item wdt:P31 wd:Q5393308 .
     ?item wdt:P17 wd:Q17 .
   }
+  ?item rdfs:label ?idLabel . FILTER(LANG(?idLabel) = "id")
   OPTIONAL { ?item rdfs:label ?jaLabel . FILTER(LANG(?jaLabel) = "ja") }
-  OPTIONAL { ?item rdfs:label ?idLabel . FILTER(LANG(?idLabel) = "id") }
-  OPTIONAL { ?item wdt:P17 ?country . }
   FILTER NOT EXISTS { ?item rdfs:label ?koLabel . FILTER(LANG(?koLabel) = "ko") }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?item
+"""
+
+# Query 2: Shrines with Japanese labels but no Indonesian label (hanja fallback)
+SPARQL_JA = """
+SELECT DISTINCT ?item ?jaLabel WHERE {
+  {
+    ?item wdt:P31/wdt:P279* wd:Q845945 .
+  }
+  UNION
+  {
+    ?item wdt:P31 wd:Q5393308 .
+    ?item wdt:P17 wd:Q17 .
+  }
+  ?item rdfs:label ?jaLabel . FILTER(LANG(?jaLabel) = "ja")
+  FILTER NOT EXISTS { ?item rdfs:label ?idLabel . FILTER(LANG(?idLabel) = "id") }
+  FILTER NOT EXISTS { ?item rdfs:label ?koLabel . FILTER(LANG(?koLabel) = "ko") }
 }
 ORDER BY ?item
 """
@@ -55,19 +70,19 @@ KOREAN_SUFFIX = {
 }
 
 
-def fetch_shrines():
-    """Fetch shrines missing Korean labels from Wikidata."""
-    print("Querying Wikidata for shrines without Korean labels...")
+def run_sparql(query, label):
+    """Run a SPARQL query and return results."""
+    print(f"Querying Wikidata: {label}...")
     r = requests.get(
         SPARQL_ENDPOINT,
-        params={"query": SPARQL_QUERY, "format": "json"},
+        params={"query": query, "format": "json"},
         headers={"User-Agent": "Japanese-Tokiponizer/1.0 (Korean label pipeline)"},
-        timeout=120,
+        timeout=300,
     )
     r.raise_for_status()
     data = r.json()
     results = data["results"]["bindings"]
-    print(f"Got {len(results)} results from Wikidata.")
+    print(f"  Got {len(results)} results.")
     return results
 
 
@@ -80,8 +95,6 @@ def japanese_to_korean_hanja(ja_label):
     if not ja_label:
         return None
 
-    # Split the label into kanji segments and kana segments
-    # Process kanji via hanja, kana via koreanize
     result_parts = []
     current_kana = []
     current_kanji = []
@@ -103,7 +116,6 @@ def japanese_to_korean_hanja(ja_label):
                 current_kana = []
             current_kanji.append(char)
         else:
-            # Other characters (spaces, punctuation) — flush both
             if current_kanji:
                 kanji_str = "".join(current_kanji)
                 translated = hanja.translate(kanji_str, "substitution")
@@ -114,7 +126,6 @@ def japanese_to_korean_hanja(ja_label):
                 result_parts.append(koreanize(kana_str))
                 current_kana = []
 
-    # Flush remaining
     if current_kanji:
         kanji_str = "".join(current_kanji)
         translated = hanja.translate(kanji_str, "substitution")
@@ -130,72 +141,63 @@ def japanese_to_korean_hanja(ja_label):
     return result if result else None
 
 
-def make_korean_label_japan(id_label, ja_label):
-    """Build Korean label for a Japan-based shrine using Indonesian label.
-
-    Returns Korean label string or None.
-    """
-    if not id_label:
-        # Fallback: use hanja on Japanese label
-        if ja_label:
-            return japanese_to_korean_hanja(ja_label)
-        return None
-
-    processed = process_label("id", id_label)
-    if processed is None:
-        # Indonesian label didn't match known prefix — try hanja fallback
-        if ja_label:
-            return japanese_to_korean_hanja(ja_label)
-        return None
-
-    prefix, cleaned_name = processed
-    suffix = KOREAN_SUFFIX.get(prefix, "신사")
-
-    # Koreanize the shrine name
-    korean_name = koreanize(cleaned_name)
-    if not korean_name:
-        return None
-
-    return f"{korean_name} {suffix}"
-
-
-def make_korean_label_nonjapan(ja_label):
-    """Build Korean label for a non-Japan shrine using hanja readings."""
-    return japanese_to_korean_hanja(ja_label)
-
-
 def main():
-    results = fetch_shrines()
-
-    # Deduplicate by QID (keep first occurrence)
-    seen = set()
-    deduped = []
-    for binding in results:
-        qid = binding["item"]["value"].split("/")[-1]
-        if qid not in seen:
-            seen.add(qid)
-            deduped.append(binding)
-    print(f"After dedup: {len(deduped)} unique shrines without Korean labels")
-
     rows = []
+    seen_qids = set()
     skipped = 0
 
-    for binding in deduped:
+    # --- Path 1: Shrines with Indonesian labels → koreanize ---
+    id_results = run_sparql(SPARQL_ID, "shrines with Indonesian labels, no Korean")
+
+    for binding in id_results:
         qid = binding["item"]["value"].split("/")[-1]
+        if qid in seen_qids:
+            continue
+        seen_qids.add(qid)
+
+        id_label = binding["idLabel"]["value"]
         ja_label = binding.get("jaLabel", {}).get("value", "")
-        id_label = binding.get("idLabel", {}).get("value", "")
-        country = binding.get("country", {}).get("value", "")
-        is_japan = country.endswith("/Q17") if country else False
 
-        if is_japan:
-            ko_label = make_korean_label_japan(id_label, ja_label)
+        processed = process_label("id", id_label)
+        if processed is None:
+            # Indonesian label didn't match known prefix — try hanja fallback
+            if ja_label:
+                ko_label = japanese_to_korean_hanja(ja_label)
+                if ko_label:
+                    rows.append({"qid": qid, "ko_label": ko_label})
+                else:
+                    skipped += 1
+            else:
+                skipped += 1
+            continue
+
+        prefix, cleaned_name = processed
+        suffix = KOREAN_SUFFIX.get(prefix, "신사")
+        korean_name = koreanize(cleaned_name)
+        if korean_name:
+            rows.append({"qid": qid, "ko_label": f"{korean_name} {suffix}"})
         else:
-            ko_label = make_korean_label_nonjapan(ja_label)
+            skipped += 1
 
+    print(f"After Indonesian path: {len(rows)} labels generated")
+
+    # --- Path 2: Shrines with Japanese labels only → hanja ---
+    ja_results = run_sparql(SPARQL_JA, "shrines with Japanese labels only, no Korean")
+
+    for binding in ja_results:
+        qid = binding["item"]["value"].split("/")[-1]
+        if qid in seen_qids:
+            continue
+        seen_qids.add(qid)
+
+        ja_label = binding["jaLabel"]["value"]
+        ko_label = japanese_to_korean_hanja(ja_label)
         if ko_label:
             rows.append({"qid": qid, "ko_label": ko_label})
         else:
             skipped += 1
+
+    print(f"After both paths: {len(rows)} labels generated")
 
     # Write QuickStatements
     outdir = "quickstatements"

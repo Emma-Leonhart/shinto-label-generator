@@ -36,7 +36,6 @@ SELECT DISTINCT ?item ?jaLabel WHERE {
   }
   ?item rdfs:label ?jaLabel . FILTER(LANG(?jaLabel) = "ja")
   FILTER NOT EXISTS { ?item rdfs:label ?zhLabel . FILTER(LANG(?zhLabel) = "zh") }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 ORDER BY ?item
 """
@@ -167,7 +166,7 @@ def fetch_shrines():
         SPARQL_ENDPOINT,
         params={"query": SPARQL_QUERY, "format": "json"},
         headers={"User-Agent": "Japanese-Tokiponizer/1.0 (Chinese label pipeline)"},
-        timeout=120,
+        timeout=300,
     )
     r.raise_for_status()
     data = r.json()
