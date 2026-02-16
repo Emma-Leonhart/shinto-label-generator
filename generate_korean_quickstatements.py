@@ -19,8 +19,11 @@ import hanja
 from koreanizer import koreanize
 from fetch_shrines_tokiponize import process_label
 
-# Windows UTF-8 console fix
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+# Windows UTF-8 console fix (guard against double-wrapping from imports)
+if hasattr(sys.stdout, 'buffer') and not isinstance(sys.stdout, io.TextIOWrapper):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+elif hasattr(sys.stdout, 'encoding') and sys.stdout.encoding != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
 
 SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 
