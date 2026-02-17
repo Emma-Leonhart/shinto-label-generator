@@ -8,47 +8,78 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: system-ui, -apple-system, sans-serif;
-      background: #0f1117;
-      color: #e2e8f0;
-      min-height: 100vh;
-      padding: 2rem 1.5rem;
+      background: #0f1117; color: #e2e8f0;
+      min-height: 100vh; padding: 2rem 1.5rem;
     }
     .container { max-width: 860px; margin: 0 auto; }
     .breadcrumb { font-size: 0.8rem; color: #475569; margin-bottom: 1.25rem; }
     .breadcrumb a { color: #6366f1; text-decoration: none; }
     .breadcrumb a:hover { text-decoration: underline; }
     h1 { font-size: 1.4rem; color: #a5b4fc; margin-bottom: 0.3rem; }
-    .meta { font-size: 0.82rem; color: #475569; margin-bottom: 1.5rem; }
-    .copy-bar { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
+    .meta { font-size: 0.82rem; color: #475569; margin-bottom: 1.25rem; }
+    .copy-bar {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem;
+    }
     .copy-btn {
       background: #4f46e5; border: none; color: #fff; border-radius: 6px;
-      padding: 0.45rem 1.2rem; font-size: 0.85rem; cursor: pointer; transition: background 0.15s;
+      padding: 0.45rem 1.2rem; font-size: 0.85rem; cursor: pointer;
+      transition: background 0.15s;
     }
     .copy-btn:hover { background: #4338ca; }
     .copy-btn.copied { background: #16a34a; }
     .qs-link { font-size: 0.82rem; color: #475569; text-decoration: none; }
     .qs-link:hover { color: #a5b4fc; }
-    .line-count { font-size: 0.8rem; color: #334155; margin-left: auto; }
     textarea {
-      width: 100%; height: 600px;
+      width: 100%; height: 560px;
       background: #0a0c14; border: 1px solid #1e2130; border-radius: 8px;
       color: #cbd5e1;
       font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
       font-size: 0.72rem; line-height: 1.55; padding: 0.75rem;
-      resize: vertical; outline: none;
+      resize: vertical; outline: none; margin-bottom: 1.5rem;
     }
     textarea:focus { border-color: #4f46e5; }
+    details {
+      background: #13151f; border: 1px solid #1e2130; border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+    }
+    summary {
+      font-size: 0.85rem; color: #c4b5fd; cursor: pointer;
+      font-weight: 600; user-select: none;
+    }
+    summary:hover { color: #a5b4fc; }
+    .method-body {
+      margin-top: 0.85rem;
+      font-size: 0.83rem; color: #94a3b8; line-height: 1.7;
+    }
+    .method-body p { margin-bottom: 0.6rem; }
+    .method-body ul, .method-body ol {
+      padding-left: 1.4rem; margin-bottom: 0.6rem;
+    }
+    .method-body li { margin-bottom: 0.25rem; }
+    .method-body code {
+      background: #1e2130; border-radius: 3px; padding: 0.1rem 0.35rem;
+      font-family: monospace; font-size: 0.9em; color: #a5b4fc;
+    }
+    .method-body strong { color: #c4b5fd; }
+    .method-body em { color: #94a3b8; }
   </style>
 </head>
 <body>
 <div class="container">
   <p class="breadcrumb"><a href="index.html">&larr; All languages</a></p>
   <h1>🇱🇹 Lithuanian (Lietuvių)</h1>
-  <p class="meta">Wikidata QuickStatements &mdash; language code <code style="color:#a5b4fc">lt</code> &mdash; 24,518 statements</p>
+  <p class="meta">
+    Wikidata QuickStatements &mdash; language code
+    <code style="background:#1e2130;border-radius:3px;padding:0.1rem 0.35rem;font-size:0.9em;color:#a5b4fc">lt</code>
+    &mdash; 24,518 statements
+  </p>
+
   <div class="copy-bar">
     <button class="copy-btn" id="copy-btn" onclick="copyAll()">Copy all</button>
-    <a class="qs-link" href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">Open QuickStatements ↗</a>
+    <a class="qs-link" href="https://quickstatements.toolforge.org/#/batch"
+       target="_blank" rel="noopener">Open QuickStatements ↗</a>
   </div>
+
   <textarea id="ta" spellcheck="false" autocorrect="off" autocomplete="off">Q100464312	Llt	&quot;Nakos maldykla&quot;
 Q100544140	Llt	&quot;Šibukavos maldykla&quot;
 Q100551246	Llt	&quot;Takus maldykla&quot;
@@ -24568,6 +24599,17 @@ Q60581	Llt	&quot;Tagatos maldykla&quot;
 Q63471	Llt	&quot;Omuros maldykla&quot;
 Q65320	Llt	&quot;Ivos maldykla&quot;
 </textarea>
+
+  <details>
+    <summary>How this was generated</summary>
+    <div class="method-body">
+            <p>Fetches shrines missing a Lithuanian label. The name undergoes phonological
+      adaptation (ch→č, sh→š, w→v) and the final word is declined into the genitive
+      case using Lithuanian vowel-ending rules. The word <strong>maldykla</strong>
+      (place of worship / shrine) is appended.</p>
+      <p>Example: <em>Kuil Ise</em> → <em>Isės maldykla</em></p>
+    </div>
+  </details>
 </div>
 <script>
   function copyAll() {
