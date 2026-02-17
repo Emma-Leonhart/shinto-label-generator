@@ -1,6 +1,8 @@
 # Japanese-Tokiponizer
 
-Generates multi-language labels for Shinto shrines and Buddhist temples sourced from Wikidata. Currently produces labels in **Toki Pona**, **Korean**, and **Chinese**.
+Generates multi-language labels for Shinto shrines and Buddhist temples sourced from Wikidata. Currently produces labels in **Toki Pona**, **Korean**, **Chinese**, **German**, **Spanish**, **Basque**, **Italian**, **Lithuanian**, **Dutch**, **Russian**, **Turkish**, and **Ukrainian**.
+
+**GitHub Pages:** Browse and copy QuickStatements output at [emma-leonhart.github.io/Multilingual-Shrine-label-generation-pipeline](https://emma-leonhart.github.io/Multilingual-Shrine-label-generation-pipeline)
 
 The Toki Pona module converts Japanese names (Hepburn romanization, Nihon-shiki, Hiragana, Katakana) into Toki Pona phonology, following a custom phonological mapping system designed to preserve Japanese etymological distinctions (Yotsugana, H→K/P positional rules, etc.)
 
@@ -11,8 +13,10 @@ The Toki Pona module converts Japanese names (Hepburn romanization, Nihon-shiki,
 - `fetch_shrines_tokiponize.py` — Toki Pona SPARQL pipeline: fetches shrines with Indonesian labels, tokiponizes, outputs CSV + QuickStatements.
 - `generate_korean_quickstatements.py` — Korean label pipeline: koreanize for Japan shrines, hanja readings for non-Japan shrines.
 - `generate_chinese_quickstatements.py` — Chinese label pipeline: kana→man'yogana substitution + OpenCC shinjitai→simplified conversion.
-- `!regenerateQuickStatements.bat` — Master batch file: runs all three pipelines sequentially.
-- `quickstatements/` — Output directory containing `tok.txt`, `ko.txt`, `zh.txt` for Wikidata QuickStatements import.
+- `generate_multilang_quickstatements.py` — Multi-language pipeline: tr, de, nl, es, it, eu, lt, ru, uk labels via transliteration/romanization.
+- `!regenerateQuickStatements.bat` — Master batch file: runs all pipelines sequentially.
+- `quickstatements/` — Output directory: `tok.txt`, `ko.txt`, `zh.txt`, `de.txt`, `es.txt`, `eu.txt`, `it.txt`, `lt.txt`, `nl.txt`, `ru.txt`, `tr.txt`, `uk.txt`
+- `docs/` — GitHub Pages site: browse and copy all QuickStatements output in-browser.
 
 ## Dependencies
 
