@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shrine Label QuickStatements</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #1a1d2e;
+      border-bottom: 1px solid #2d3148;
+      padding: 1.25rem 2rem;
+    }
+
+    header h1 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #a5b4fc;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 1rem 2rem;
+      background: #13151f;
+      border-bottom: 1px solid #1e2130;
+    }
+
+    nav button {
+      background: #1e2130;
+      border: 1px solid #2d3148;
+      color: #94a3b8;
+      border-radius: 6px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    nav button:hover {
+      background: #252840;
+      color: #c4b5fd;
+      border-color: #4f46e5;
+    }
+
+    nav button.active {
+      background: #312e81;
+      border-color: #6366f1;
+      color: #e0e7ff;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 1.5rem 2rem;
+      max-width: 1000px;
+    }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .panel-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .panel-header h2 {
+      font-size: 1.1rem;
+      color: #c4b5fd;
+    }
+
+    .panel-header .line-count {
+      font-size: 0.78rem;
+      color: #475569;
+    }
+
+    .copy-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .copy-btn {
+      background: #4f46e5;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .copy-btn:hover { background: #4338ca; }
+
+    .copy-btn.copied {
+      background: #16a34a;
+    }
+
+    .qs-box {
+      width: 100%;
+      height: 520px;
+      background: #0a0c14;
+      border: 1px solid #1e2130;
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      line-height: 1.55;
+      padding: 0.75rem;
+      resize: vertical;
+      outline: none;
+    }
+
+    .qs-box:focus {
+      border-color: #4f46e5;
+    }
+
+    .loading {
+      color: #475569;
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    .error {
+      color: #f87171;
+      padding: 1rem;
+      background: #1f0a0a;
+      border: 1px solid #7f1d1d;
+      border-radius: 6px;
+      font-size: 0.82rem;
+    }
+
+    .qs-link {
+      font-size: 0.78rem;
+      color: #475569;
+      text-decoration: none;
+    }
+
+    .qs-link:hover { color: #a5b4fc; }
+
+    @media (max-width: 600px) {
+      header, nav, main { padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Shrine Label QuickStatements</h1>
+  <p>Multi-language Wikidata labels for Shinto shrines &amp; Buddhist temples &mdash;
+     <a class="qs-link" href="https://github.com/Emma-Leonhart/Multilingual-Shrine-label-generation-pipeline">source</a>
+  </p>
+</header>
+
+<nav id="lang-nav"></nav>
+
+<main>
+  <div id="panels"></div>
+</main>
+
+<script>
+  const BASE = 'https://raw.githubusercontent.com/Emma-Leonhart/Multilingual-Shrine-label-generation-pipeline/master/quickstatements/';
+
+  const LANGS = [
+    { code: 'tok', name: 'Toki Pona',  flag: '🌍' },
+    { code: 'ko',  name: '한국어 (Korean)',    flag: '🇰🇷' },
+    { code: 'zh',  name: '中文 (Chinese)',    flag: '🇨🇳' },
+    { code: 'de',  name: 'Deutsch (German)',   flag: '🇩🇪' },
+    { code: 'nl',  name: 'Nederlands (Dutch)',  flag: '🇳🇱' },
+    { code: 'es',  name: 'Español (Spanish)',  flag: '🇪🇸' },
+    { code: 'it',  name: 'Italiano (Italian)', flag: '🇮🇹' },
+    { code: 'tr',  name: 'Türkçe (Turkish)',   flag: '🇹🇷' },
+    { code: 'ru',  name: 'Русский (Russian)',  flag: '🇷🇺' },
+    { code: 'uk',  name: 'Українська (Ukrainian)', flag: '🇺🇦' },
+    { code: 'lt',  name: 'Lietuvių (Lithuanian)', flag: '🇱🇹' },
+    { code: 'eu',  name: 'Euskara (Basque)',   flag: '🇪🇸' },
+  ];
+
+  const nav    = document.getElementById('lang-nav');
+  const panels = document.getElementById('panels');
+  const loaded = {};
+
+  function countLines(text) {
+    return text ? text.split('\n').filter(l => l.trim()).length : 0;
+  }
+
+  function showPanel(code) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + code).classList.add('active');
+    document.getElementById('btn-' + code).classList.add('active');
+
+    if (!loaded[code]) {
+      loaded[code] = true;
+      const textarea = document.getElementById('ta-' + code);
+      const countEl  = document.getElementById('lc-' + code);
+      const loadEl   = document.getElementById('loading-' + code);
+
+      fetch(BASE + code + '.txt')
+        .then(r => {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        })
+        .then(text => {
+          textarea.value = text;
+          const n = countLines(text);
+          countEl.textContent = n.toLocaleString() + ' statements';
+          if (loadEl) loadEl.remove();
+          textarea.style.display = '';
+        })
+        .catch(err => {
+          if (loadEl) loadEl.textContent = '';
+          const errEl = document.createElement('div');
+          errEl.className = 'error';
+          errEl.textContent = 'Failed to load ' + code + '.txt: ' + err.message;
+          textarea.parentNode.insertBefore(errEl, textarea);
+        });
+    }
+  }
+
+  LANGS.forEach(({ code, name, flag }) => {
+    // Nav button
+    const btn = document.createElement('button');
+    btn.id = 'btn-' + code;
+    btn.textContent = flag + ' ' + code;
+    btn.title = name;
+    btn.onclick = () => showPanel(code);
+    nav.appendChild(btn);
+
+    // Panel
+    const panel = document.createElement('div');
+    panel.className = 'panel';
+    panel.id = 'panel-' + code;
+
+    panel.innerHTML = `
+      <div class="panel-header">
+        <h2>${flag} ${name}</h2>
+        <span class="line-count" id="lc-${code}"></span>
+      </div>
+      <div class="copy-bar">
+        <button class="copy-btn" id="copy-${code}" onclick="copyAll('${code}')">Copy all</button>
+        <a class="qs-link" href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">
+          Open QuickStatements ↗
+        </a>
+      </div>
+      <div id="loading-${code}" class="loading">Loading…</div>
+      <textarea class="qs-box" id="ta-${code}" style="display:none" spellcheck="false" autocorrect="off" autocomplete="off"></textarea>
+    `;
+
+    panels.appendChild(panel);
+  });
+
+  function copyAll(code) {
+    const ta  = document.getElementById('ta-' + code);
+    const btn = document.getElementById('copy-' + code);
+    if (!ta.value) return;
+    navigator.clipboard.writeText(ta.value).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy all';
+        btn.classList.remove('copied');
+      }, 1800);
+    });
+  }
+
+  // Load first tab
+  showPanel(LANGS[0].code);
+</script>
+</body>
+</html>
