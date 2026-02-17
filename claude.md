@@ -1,7 +1,7 @@
 # Japanese-Tokiponizer
 
 ## Project Context
-Generates multi-language labels (Toki Pona, Korean, Chinese) for Shinto shrines and Buddhist temples from Wikidata.
+Generates multi-language labels (Toki Pona, Korean, Chinese, German, Spanish, Basque, Italian, Lithuanian, Dutch, Russian, Turkish, Ukrainian) for Shinto shrines and Buddhist temples from Wikidata. A GitHub Pages site at `docs/index.html` lets users browse and copy all QuickStatements output in-browser.
 
 ## Key Files
 - `tokiponizer.py` — Core phonological mapper (Japanese → Toki Pona)
@@ -9,8 +9,10 @@ Generates multi-language labels (Toki Pona, Korean, Chinese) for Shinto shrines 
 - `fetch_shrines_tokiponize.py` — SPARQL pipeline: Wikidata → Indonesian labels → tokiponize → CSV + QuickStatements
 - `generate_korean_quickstatements.py` — Korean label pipeline (koreanize for Japan shrines, hanja for non-Japan)
 - `generate_chinese_quickstatements.py` — Chinese label pipeline (kana→man'yogana + OpenCC shinjitai→simplified)
-- `!regenerateQuickStatements.bat` — Master batch: runs all three pipelines
-- `quickstatements/` — Output directory: `tok.txt`, `ko.txt`, `zh.txt`
+- `generate_multilang_quickstatements.py` — tr/de/nl/es/it/eu/lt/ru/uk pipeline
+- `!regenerateQuickStatements.bat` — Master batch: runs all pipelines
+- `quickstatements/` — Output directory: `tok.txt`, `ko.txt`, `zh.txt`, `de.txt`, `es.txt`, `eu.txt`, `it.txt`, `lt.txt`, `nl.txt`, `ru.txt`, `tr.txt`, `uk.txt`
+- `docs/index.html` — GitHub Pages site for browsing/copying QuickStatements output
 
 ## Workflow Guidelines
 - **Commit early and often.** Every meaningful change should be committed.
