@@ -1,0 +1,77 @@
+name: Regenerate QuickStatements
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'   # 1st of every month at 06:00 UTC
+  workflow_dispatch:        # allow manual trigger from the Actions tab
+  push:
+    branches: [master]
+    paths:
+      - '*.py'             # only re-fetch Wikidata when pipeline code changes
+
+concurrency:
+  group: regenerate
+  cancel-in-progress: false  # never cancel a running fetch mid-way
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests hanja opencc-python-reimplemented
+
+      - name: Run Toki Pona pipeline
+        run: python fetch_shrines_tokiponize.py
+
+      - name: Run Korean pipeline
+        run: python generate_korean_quickstatements.py
+
+      - name: Run Chinese pipeline
+        run: python generate_chinese_quickstatements.py
+
+      - name: Run multilang pipeline (tr/de/nl/es/it/eu/lt/ru/uk)
+        run: python generate_multilang_quickstatements.py
+
+      - name: Check for changes in quickstatements/
+        id: diff
+        run: |
+          git diff --stat quickstatements/
+          if git diff --quiet quickstatements/; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes — QuickStatements are already up to date."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected — will regenerate docs and commit."
+          fi
+
+      - name: Show full diff
+        if: steps.diff.outputs.changed == 'true'
+        run: git diff quickstatements/
+
+      - name: Regenerate GitHub Pages HTML
+        if: steps.diff.outputs.changed == 'true'
+        run: python docs/generate_pages.py
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add quickstatements/ docs/
+          SUMMARY=$(git diff --cached --stat | tail -1)
+          git commit -m "Auto-regenerate QuickStatements $(date -u +%Y-%m-%d)
+
+          ${SUMMARY}"
+          git push
