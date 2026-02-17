@@ -12,278 +12,183 @@
       background: #0f1117;
       color: #e2e8f0;
       min-height: 100vh;
+      padding: 2.5rem 1.5rem;
     }
 
-    header {
-      background: #1a1d2e;
-      border-bottom: 1px solid #2d3148;
-      padding: 1.25rem 2rem;
-    }
+    .container { max-width: 680px; margin: 0 auto; }
 
-    header h1 {
-      font-size: 1.3rem;
-      font-weight: 600;
+    h1 {
+      font-size: 1.6rem;
       color: #a5b4fc;
-      letter-spacing: 0.02em;
-    }
-
-    header p {
-      font-size: 0.82rem;
-      color: #64748b;
-      margin-top: 0.25rem;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      padding: 1rem 2rem;
-      background: #13151f;
-      border-bottom: 1px solid #1e2130;
-    }
-
-    nav button {
-      background: #1e2130;
-      border: 1px solid #2d3148;
-      color: #94a3b8;
-      border-radius: 6px;
-      padding: 0.35rem 0.85rem;
-      font-size: 0.82rem;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
-    nav button:hover {
-      background: #252840;
-      color: #c4b5fd;
-      border-color: #4f46e5;
-    }
-
-    nav button.active {
-      background: #312e81;
-      border-color: #6366f1;
-      color: #e0e7ff;
-      font-weight: 600;
-    }
-
-    main {
-      padding: 1.5rem 2rem;
-      max-width: 1000px;
-    }
-
-    .panel { display: none; }
-    .panel.active { display: block; }
-
-    .panel-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .panel-header h2 {
-      font-size: 1.1rem;
-      color: #c4b5fd;
-    }
-
-    .panel-header .line-count {
-      font-size: 0.78rem;
-      color: #475569;
-    }
-
-    .copy-bar {
-      display: flex;
-      gap: 0.5rem;
       margin-bottom: 0.5rem;
     }
 
-    .copy-btn {
-      background: #4f46e5;
+    .subtitle {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .subtitle a { color: #6366f1; text-decoration: none; }
+    .subtitle a:hover { text-decoration: underline; }
+
+    p {
+      color: #94a3b8;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .divider {
       border: none;
-      color: #fff;
-      border-radius: 6px;
-      padding: 0.4rem 1.1rem;
-      font-size: 0.82rem;
-      cursor: pointer;
-      transition: background 0.15s;
+      border-top: 1px solid #1e2130;
+      margin: 1.75rem 0;
     }
 
-    .copy-btn:hover { background: #4338ca; }
-
-    .copy-btn.copied {
-      background: #16a34a;
+    h2 {
+      font-size: 1rem;
+      color: #c4b5fd;
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
 
-    .qs-box {
-      width: 100%;
-      height: 520px;
-      background: #0a0c14;
-      border: 1px solid #1e2130;
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .lang-card {
+      display: block;
+      background: #1a1d2e;
+      border: 1px solid #2d3148;
       border-radius: 8px;
-      color: #cbd5e1;
-      font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      line-height: 1.55;
-      padding: 0.75rem;
-      resize: vertical;
-      outline: none;
-    }
-
-    .qs-box:focus {
-      border-color: #4f46e5;
-    }
-
-    .loading {
-      color: #475569;
-      font-style: italic;
-      padding: 2rem 0;
-    }
-
-    .error {
-      color: #f87171;
-      padding: 1rem;
-      background: #1f0a0a;
-      border: 1px solid #7f1d1d;
-      border-radius: 6px;
-      font-size: 0.82rem;
-    }
-
-    .qs-link {
-      font-size: 0.78rem;
-      color: #475569;
+      padding: 0.75rem 1rem;
       text-decoration: none;
+      transition: all 0.15s;
     }
 
-    .qs-link:hover { color: #a5b4fc; }
-
-    @media (max-width: 600px) {
-      header, nav, main { padding-left: 1rem; padding-right: 1rem; }
+    .lang-card:hover {
+      background: #252840;
+      border-color: #6366f1;
     }
+
+    .lang-card .flag { font-size: 1.2rem; }
+
+    .lang-card .lang-name {
+      display: block;
+      color: #e2e8f0;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-top: 0.3rem;
+    }
+
+    .lang-card .lang-code {
+      display: block;
+      color: #475569;
+      font-size: 0.75rem;
+      margin-top: 0.1rem;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.78rem;
+      color: #334155;
+    }
+
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #a5b4fc; }
   </style>
 </head>
 <body>
+<div class="container">
 
-<header>
   <h1>Shrine Label QuickStatements</h1>
-  <p>Multi-language Wikidata labels for Shinto shrines &amp; Buddhist temples &mdash;
-     <a class="qs-link" href="https://github.com/Emma-Leonhart/Multilingual-Shrine-label-generation-pipeline">source</a>
+  <p class="subtitle">
+    <a href="https://github.com/Emma-Leonhart/Multilingual-Shrine-label-generation-pipeline">GitHub repository</a>
   </p>
-</header>
 
-<nav id="lang-nav"></nav>
+  <p>
+    This project generates multilingual <a href="https://www.wikidata.org/" style="color:#6366f1;text-decoration:none">Wikidata</a> labels for Shinto shrines and Buddhist temples.
+    Starting from Japanese names fetched via SPARQL, the pipeline produces labels in 12 languages
+    using a combination of custom phonological rules, transliteration libraries, and character substitution.
+  </p>
+  <p>
+    Each page below contains the full QuickStatements batch for that language,
+    ready to paste into <a href="https://quickstatements.toolforge.org/#/batch" style="color:#6366f1;text-decoration:none" target="_blank" rel="noopener">QuickStatements</a> and import into Wikidata.
+  </p>
 
-<main>
-  <div id="panels"></div>
-</main>
+  <hr class="divider">
 
-<script>
-  const BASE = 'https://raw.githubusercontent.com/Emma-Leonhart/Multilingual-Shrine-label-generation-pipeline/master/quickstatements/';
+  <h2>Choose a language</h2>
 
-  const LANGS = [
-    { code: 'tok', name: 'Toki Pona',  flag: '🌍' },
-    { code: 'ko',  name: '한국어 (Korean)',    flag: '🇰🇷' },
-    { code: 'zh',  name: '中文 (Chinese)',    flag: '🇨🇳' },
-    { code: 'de',  name: 'Deutsch (German)',   flag: '🇩🇪' },
-    { code: 'nl',  name: 'Nederlands (Dutch)',  flag: '🇳🇱' },
-    { code: 'es',  name: 'Español (Spanish)',  flag: '🇪🇸' },
-    { code: 'it',  name: 'Italiano (Italian)', flag: '🇮🇹' },
-    { code: 'tr',  name: 'Türkçe (Turkish)',   flag: '🇹🇷' },
-    { code: 'ru',  name: 'Русский (Russian)',  flag: '🇷🇺' },
-    { code: 'uk',  name: 'Українська (Ukrainian)', flag: '🇺🇦' },
-    { code: 'lt',  name: 'Lietuvių (Lithuanian)', flag: '🇱🇹' },
-    { code: 'eu',  name: 'Euskara (Basque)',   flag: '🇪🇸' },
-  ];
+  <div class="lang-grid">
+    <a class="lang-card" href="tok.html">
+      <span class="flag">🌍</span>
+      <span class="lang-name">Toki Pona</span>
+      <span class="lang-code">tok</span>
+    </a>
+    <a class="lang-card" href="ko.html">
+      <span class="flag">🇰🇷</span>
+      <span class="lang-name">Korean</span>
+      <span class="lang-code">ko · 한국어</span>
+    </a>
+    <a class="lang-card" href="zh.html">
+      <span class="flag">🇨🇳</span>
+      <span class="lang-name">Chinese</span>
+      <span class="lang-code">zh · 中文</span>
+    </a>
+    <a class="lang-card" href="de.html">
+      <span class="flag">🇩🇪</span>
+      <span class="lang-name">German</span>
+      <span class="lang-code">de · Deutsch</span>
+    </a>
+    <a class="lang-card" href="nl.html">
+      <span class="flag">🇳🇱</span>
+      <span class="lang-name">Dutch</span>
+      <span class="lang-code">nl · Nederlands</span>
+    </a>
+    <a class="lang-card" href="es.html">
+      <span class="flag">🇪🇸</span>
+      <span class="lang-name">Spanish</span>
+      <span class="lang-code">es · Español</span>
+    </a>
+    <a class="lang-card" href="it.html">
+      <span class="flag">🇮🇹</span>
+      <span class="lang-name">Italian</span>
+      <span class="lang-code">it · Italiano</span>
+    </a>
+    <a class="lang-card" href="tr.html">
+      <span class="flag">🇹🇷</span>
+      <span class="lang-name">Turkish</span>
+      <span class="lang-code">tr · Türkçe</span>
+    </a>
+    <a class="lang-card" href="ru.html">
+      <span class="flag">🇷🇺</span>
+      <span class="lang-name">Russian</span>
+      <span class="lang-code">ru · Русский</span>
+    </a>
+    <a class="lang-card" href="uk.html">
+      <span class="flag">🇺🇦</span>
+      <span class="lang-name">Ukrainian</span>
+      <span class="lang-code">uk · Українська</span>
+    </a>
+    <a class="lang-card" href="lt.html">
+      <span class="flag">🇱🇹</span>
+      <span class="lang-name">Lithuanian</span>
+      <span class="lang-code">lt · Lietuvių</span>
+    </a>
+    <a class="lang-card" href="eu.html">
+      <span class="flag">🏔️</span>
+      <span class="lang-name">Basque</span>
+      <span class="lang-code">eu · Euskara</span>
+    </a>
+  </div>
 
-  const nav    = document.getElementById('lang-nav');
-  const panels = document.getElementById('panels');
-  const loaded = {};
+  <footer>
+    <p>Labels generated from <a href="https://www.wikidata.org/" target="_blank" rel="noopener">Wikidata</a> via SPARQL &mdash; last pipeline run 2026-02-17</p>
+  </footer>
 
-  function countLines(text) {
-    return text ? text.split('\n').filter(l => l.trim()).length : 0;
-  }
-
-  function showPanel(code) {
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-    document.getElementById('panel-' + code).classList.add('active');
-    document.getElementById('btn-' + code).classList.add('active');
-
-    if (!loaded[code]) {
-      loaded[code] = true;
-      const textarea = document.getElementById('ta-' + code);
-      const countEl  = document.getElementById('lc-' + code);
-      const loadEl   = document.getElementById('loading-' + code);
-
-      fetch(BASE + code + '.txt')
-        .then(r => {
-          if (!r.ok) throw new Error('HTTP ' + r.status);
-          return r.text();
-        })
-        .then(text => {
-          textarea.value = text;
-          const n = countLines(text);
-          countEl.textContent = n.toLocaleString() + ' statements';
-          if (loadEl) loadEl.remove();
-          textarea.style.display = '';
-        })
-        .catch(err => {
-          if (loadEl) loadEl.textContent = '';
-          const errEl = document.createElement('div');
-          errEl.className = 'error';
-          errEl.textContent = 'Failed to load ' + code + '.txt: ' + err.message;
-          textarea.parentNode.insertBefore(errEl, textarea);
-        });
-    }
-  }
-
-  LANGS.forEach(({ code, name, flag }) => {
-    // Nav button
-    const btn = document.createElement('button');
-    btn.id = 'btn-' + code;
-    btn.textContent = flag + ' ' + code;
-    btn.title = name;
-    btn.onclick = () => showPanel(code);
-    nav.appendChild(btn);
-
-    // Panel
-    const panel = document.createElement('div');
-    panel.className = 'panel';
-    panel.id = 'panel-' + code;
-
-    panel.innerHTML = `
-      <div class="panel-header">
-        <h2>${flag} ${name}</h2>
-        <span class="line-count" id="lc-${code}"></span>
-      </div>
-      <div class="copy-bar">
-        <button class="copy-btn" id="copy-${code}" onclick="copyAll('${code}')">Copy all</button>
-        <a class="qs-link" href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">
-          Open QuickStatements ↗
-        </a>
-      </div>
-      <div id="loading-${code}" class="loading">Loading…</div>
-      <textarea class="qs-box" id="ta-${code}" style="display:none" spellcheck="false" autocorrect="off" autocomplete="off"></textarea>
-    `;
-
-    panels.appendChild(panel);
-  });
-
-  function copyAll(code) {
-    const ta  = document.getElementById('ta-' + code);
-    const btn = document.getElementById('copy-' + code);
-    if (!ta.value) return;
-    navigator.clipboard.writeText(ta.value).then(() => {
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = 'Copy all';
-        btn.classList.remove('copied');
-      }, 1800);
-    });
-  }
-
-  // Load first tab
-  showPanel(LANGS[0].code);
-</script>
+</div>
 </body>
 </html>
