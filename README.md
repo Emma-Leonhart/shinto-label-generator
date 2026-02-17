@@ -1,4 +1,4 @@
-# Japanese-Tokiponizer
+# Shrine label generator
 
 Generates multi-language labels for Shinto shrines and Buddhist temples sourced from Wikidata. Currently produces labels in **Toki Pona**, **Korean**, **Chinese**, **German**, **Spanish**, **Basque**, **Italian**, **Lithuanian**, **Dutch**, **Russian**, **Turkish**, and **Ukrainian**.
 
