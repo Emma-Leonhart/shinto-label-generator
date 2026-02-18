@@ -64,7 +64,7 @@ ORDER BY ?item
 # Indonesian prefix → Korean suffix mapping
 KOREAN_SUFFIX = {
     "Kuil":        "신사",      # shrine
-    "Kuil Agung":  "신궁",      # grand shrine
+    "Kuil Agung":  "대신사",    # grand shrine
     "Wihara":      "사원",      # temple
     "Wihara Agung": "대사원",   # grand temple
 }

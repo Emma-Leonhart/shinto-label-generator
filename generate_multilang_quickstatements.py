@@ -69,14 +69,15 @@ CYRILLIC_YOON = {
 # ----------------------------
 
 def extract_name(id_label):
-    """Extract shrine name from Indonesian label, preserving original casing."""
+    """Extract shrine name from Indonesian label, preserving original casing.
+    Returns (name, is_grand) or None."""
     cleaned = re.sub(r'\([^)]*\)', '', id_label)
     cleaned = re.sub(r'\[[^\]]*\]', '', cleaned)
     cleaned = cleaned.strip()
-    for prefix in ["Kuil Agung ", "Kuil "]:
+    for prefix, is_grand in [("Kuil Agung ", True), ("Kuil ", False)]:
         if cleaned.startswith(prefix):
             name = cleaned[len(prefix):].strip()
-            return name if name else None
+            return (name, is_grand) if name else None
     return None
 
 # ----------------------------
@@ -188,32 +189,32 @@ def decline_ukrainian(name):
 # Label formatters per language
 # ----------------------------
 
-def format_label(lang, name):
+def format_label(lang, name, is_grand=False):
     """Format a shrine name into a target-language label."""
     if lang == "tr":
-        return f"{name} Tapınağı"
+        return f"{name} Büyük Tapınağı" if is_grand else f"{name} Tapınağı"
     if lang == "de":
-        return f"{name} Schrein"
+        return f"{name} Großschrein" if is_grand else f"{name} Schrein"
     if lang == "nl":
-        return f"{name}-shrijn"
+        return f"{name}-shrijn"   # no distinction
     if lang == "es":
-        return f"Santuario {name}"
+        return f"Gran Santuario {name}" if is_grand else f"Santuario {name}"
     if lang == "it":
-        return f"Santuario {name}"
+        return f"Grande Santuario {name}" if is_grand else f"Santuario {name}"
     if lang == "eu":
-        return f"{name} santutegia"
+        return f"{name} santutegia nagusia" if is_grand else f"{name} santutegia"
     if lang == "lt":
         lt_name = lithuanize(name)
         lt_name = decline_lithuanian(lt_name)
-        return f"{lt_name} maldykla"
+        return f"{lt_name} maldykla"  # no distinction
     if lang == "ru":
         cy_name = cyrillicize(name, "ru")
         cy_name = decline_russian(cy_name)
-        return f"Храм {cy_name}"
+        return f"Большой храм {cy_name}" if is_grand else f"Храм {cy_name}"
     if lang == "uk":
         cy_name = cyrillicize(name, "uk")
         cy_name = decline_ukrainian(cy_name)
-        return f"Святилище {cy_name}"
+        return f"Велике святилище {cy_name}" if is_grand else f"Святилище {cy_name}"
     return None
 
 # ----------------------------
@@ -279,12 +280,13 @@ def main():
             seen.add(qid)
 
             id_label = binding["idLabel"]["value"]
-            name = extract_name(id_label)
-            if not name:
+            extracted = extract_name(id_label)
+            if not extracted:
                 skipped += 1
                 continue
+            name, is_grand = extracted
 
-            label = format_label(lang, name)
+            label = format_label(lang, name, is_grand)
             if label:
                 rows.append({"qid": qid, "label": label})
             else:
