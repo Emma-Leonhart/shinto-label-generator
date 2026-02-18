@@ -47,10 +47,14 @@ jobs:
       - name: Check for changes in quickstatements/
         id: diff
         run: |
-          git diff --stat quickstatements/
-          if git diff --quiet quickstatements/; then
+          # Stage quickstatements/ so git diff --cached catches both modified
+          # tracked files AND brand-new untracked files (e.g. a new language)
+          git add quickstatements/
+          git diff --cached --stat quickstatements/
+          if git diff --cached --quiet quickstatements/; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No changes — QuickStatements are already up to date."
+            git restore --staged quickstatements/
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "Changes detected — will regenerate docs and commit."
@@ -58,7 +62,7 @@ jobs:
 
       - name: Show full diff
         if: steps.diff.outputs.changed == 'true'
-        run: git diff quickstatements/
+        run: git diff --cached quickstatements/
 
       - name: Regenerate GitHub Pages HTML
         if: steps.diff.outputs.changed == 'true'
