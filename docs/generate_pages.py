@@ -98,6 +98,19 @@ LANGS = [
       <p>Fetches shrines missing a Basque label. Appends
       <strong>santutegia</strong> (sanctuary) to the extracted name.</p>
       <p>Example: <em>Kuil Ise</em> → <em>Ise santutegia</em></p>"""),
+
+    ("fa", "Farsi", "فارسی", "🇮🇷", """\
+      <p>Fetches shrines missing a Farsi label. The extracted name is transliterated
+      from romanized Japanese to Perso-Arabic script using a syllable-based mapping:</p>
+      <ul>
+        <li>Vowels at word-start take an alef carrier: <em>i</em> → ای, <em>u</em> → او</li>
+        <li>Yōon syllables: <em>kyo</em> → کیو, <em>sha</em> → شا, <em>chi</em> → چی</li>
+        <li>Voiced stops preserved: <em>ga</em> → گا, <em>ba</em> → با, <em>da</em> → دا</li>
+        <li><em>tsu</em> → تسو, <em>fu</em> → فو, <em>ji</em> → جی</li>
+      </ul>
+      <p>Prefixed with <strong>معبد</strong> (shrine) or
+      <strong>معبد بزرگ</strong> (grand shrine) for Kuil Agung.</p>
+      <p>Example: <em>Kuil Hakone</em> → معبد هاکونه</p>"""),
 ]
 
 PAGE_TEMPLATE = """\
@@ -183,7 +196,7 @@ PAGE_TEMPLATE = """\
        target="_blank" rel="noopener">Open QuickStatements ↗</a>
   </div>
 
-  <textarea id="ta" spellcheck="false" autocorrect="off" autocomplete="off">{content}</textarea>
+  <textarea id="ta" spellcheck="false" autocorrect="off" autocomplete="off"{rtl_attr}>{content}</textarea>
 
   <details>
     <summary>How this was generated</summary>
@@ -207,6 +220,8 @@ PAGE_TEMPLATE = """\
 </html>
 """
 
+RTL_LANGS = {"fa", "ar", "he", "ur"}
+
 def main():
     for code, english, native, flag, methodology in LANGS:
         txt_path = os.path.join(QS_DIR, code + ".txt")
@@ -214,6 +229,7 @@ def main():
         count = len([l for l in raw.splitlines() if l.strip()])
         escaped = html.escape(raw)
 
+        rtl_attr = ' dir="rtl"' if code in RTL_LANGS else ""
         out = PAGE_TEMPLATE.format(
             code=code,
             english=english,
@@ -222,6 +238,7 @@ def main():
             count=f"{count:,}",
             content=escaped,
             methodology=methodology,
+            rtl_attr=rtl_attr,
         )
         out_path = os.path.join(DOCS_DIR, code + ".html")
         with open(out_path, "w", encoding="utf-8") as f:

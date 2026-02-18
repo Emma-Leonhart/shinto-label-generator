@@ -6,6 +6,7 @@ Languages handled:
   Simple suffix/prefix: tr, de, nl, es, it, eu
   Lithuanian (declension): lt
   Cyrillic (declension): ru, uk
+  Farsi (Perso-Arabic script): fa
 
 Output: quickstatements/{lang}.txt for each language
 """
@@ -63,6 +64,74 @@ CYRILLIC_YOON = {
     "pya": "пя", "pyu": "пю", "pyo": "пё",
     "dya": "дя", "dyu": "дю", "dyo": "дё",
 }
+
+# ----------------------------
+# Farsi maps (Perso-Arabic script)
+# ----------------------------
+
+# Initial vowels need an alef carrier in Farsi
+FARSI_INITIAL = {"a": "ا", "i": "ای", "u": "او", "e": "ای", "o": "او"}
+
+FARSI_BASE = {
+    "a": "ا", "i": "ی", "u": "و", "e": "ه", "o": "و",
+    "ka": "کا", "ki": "کی", "ku": "کو", "ke": "که", "ko": "کو",
+    "sa": "سا", "shi": "شی", "su": "سو", "se": "سه", "so": "سو",
+    "ta": "تا", "chi": "چی", "tsu": "تسو", "tu": "تسو", "te": "ته", "to": "تو",
+    "na": "نا", "ni": "نی", "nu": "نو", "ne": "نه", "no": "نو",
+    "ha": "ها", "hi": "هی", "hu": "هو", "fu": "فو", "he": "هه", "ho": "هو",
+    "ma": "ما", "mi": "می", "mu": "مو", "me": "مه", "mo": "مو",
+    "ya": "یا", "yu": "یو", "yo": "یو",
+    "ra": "را", "ri": "ری", "ru": "رو", "re": "ره", "ro": "رو",
+    "wa": "وا", "wi": "وی", "we": "وه", "wo": "و",
+    "n": "ن",
+    "ga": "گا", "gi": "گی", "gu": "گو", "ge": "گه", "go": "گو",
+    "za": "زا", "ji": "جی", "zu": "زو", "ze": "زه", "zo": "زو",
+    "da": "دا", "di": "دی", "du": "دو", "de": "ده", "do": "دو",
+    "ba": "با", "bi": "بی", "bu": "بو", "be": "به", "bo": "بو",
+    "pa": "پا", "pi": "پی", "pu": "پو", "pe": "په", "po": "پو",
+}
+
+FARSI_YOON = {
+    "kya": "کیا", "kyu": "کیو", "kyo": "کیو",
+    "sha": "شا",  "shu": "شو",  "sho": "شو",
+    "cha": "چا",  "chu": "چو",  "cho": "چو",
+    "nya": "نیا", "nyu": "نیو", "nyo": "نیو",
+    "hya": "هیا", "hyu": "هیو", "hyo": "هیو",
+    "mya": "میا", "myu": "میو", "myo": "میو",
+    "rya": "ریا", "ryu": "ریو", "ryo": "ریو",
+    "gya": "گیا", "gyu": "گیو", "gyo": "گیو",
+    "ja":  "جا",  "ju":  "جو",  "jo":  "جو",
+    "bya": "بیا", "byu": "بیو", "byo": "بیو",
+    "pya": "پیا", "pyu": "پیو", "pyo": "پیو",
+    "dya": "دیا", "dyu": "دیو", "dyo": "دیو",
+}
+
+
+def _farsify_word(word):
+    """Transliterate a single romanized Japanese word to Farsi script."""
+    w = unicodedata.normalize("NFKC", word).lower()
+    w = w.replace("ā", "a").replace("ī", "i").replace("ū", "u").replace("ē", "e").replace("ō", "o")
+    w = re.sub(r"[^\w]", "", w)
+    w = kana_to_romaji(w)
+    tokens = tokenize_romaji(w)
+    parts = []
+    for idx, t in enumerate(tokens):
+        if t in FARSI_YOON:
+            parts.append(FARSI_YOON[t])
+        elif t in FARSI_BASE:
+            if idx == 0 and t in FARSI_INITIAL:
+                parts.append(FARSI_INITIAL[t])
+            else:
+                parts.append(FARSI_BASE[t])
+    return "".join(parts)
+
+
+def farsify(name):
+    """Convert a romanized Japanese name to Farsi script. Handles multi-word names."""
+    words = name.split()
+    farsi_words = [_farsify_word(w) for w in words if w]
+    return " ".join(w for w in farsi_words if w)
+
 
 # ----------------------------
 # Name extraction
@@ -215,13 +284,16 @@ def format_label(lang, name, is_grand=False):
         cy_name = cyrillicize(name, "uk")
         cy_name = decline_ukrainian(cy_name)
         return f"Велике святилище {cy_name}" if is_grand else f"Святилище {cy_name}"
+    if lang == "fa":
+        fa_name = farsify(name)
+        return f"معبد بزرگ {fa_name}" if is_grand else f"معبد {fa_name}"
     return None
 
 # ----------------------------
 # SPARQL
 # ----------------------------
 
-ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk"]
+ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa"]
 
 
 def make_sparql(lang_code):
