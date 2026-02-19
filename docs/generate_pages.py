@@ -111,6 +111,21 @@ LANGS = [
       <p>Prefixed with <strong>معبد</strong> (shrine) or
       <strong>معبد بزرگ</strong> (grand shrine) for Kuil Agung.</p>
       <p>Example: <em>Kuil Hakone</em> → معبد هاکونه</p>"""),
+
+    ("ar", "Arabic", "العربية", "🇸🇦", """\
+      <p>Fetches shrines missing an Arabic (MSA) label. The extracted name is transliterated
+      from romanized Japanese to Arabic script using a syllable-based mapping.
+      Key differences from the Farsi mapping:</p>
+      <ul>
+        <li>Initial vowels take a hamza carrier: <em>a</em> → أ, <em>i</em> → إي, <em>u</em> → أو</li>
+        <li><em>g</em> → غ (ghain — Arabic has no گ): <em>ga</em> → غا, <em>gu</em> → غو</li>
+        <li><em>ch</em> → تش (two letters — Arabic has no چ): <em>chi</em> → تشي</li>
+        <li><em>p</em> → ب (Arabic has no پ): <em>pa</em> → با</li>
+        <li>Mid-word <em>e</em> → ي (same as <em>i</em>, not ه as in Farsi)</li>
+      </ul>
+      <p>Prefixed with <strong>معبد</strong> (place of worship) or
+      <strong>معبد … الكبير</strong> (grand shrine) for Kuil Agung.</p>
+      <p>Example: <em>Kuil Hakone</em> → معبد هاكوني</p>"""),
 ]
 
 PAGE_TEMPLATE = """\

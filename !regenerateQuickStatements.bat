@@ -45,7 +45,7 @@ if errorlevel 1 (
 )
 echo.
 
-echo [4/4] Generating tr/de/nl/es/it/eu/lt/ru/uk labels...
+echo [4/4] Generating tr/de/nl/es/it/eu/lt/ru/uk/fa/ar labels...
 %PYTHON% generate_multilang_quickstatements.py
 if errorlevel 1 (
     echo.

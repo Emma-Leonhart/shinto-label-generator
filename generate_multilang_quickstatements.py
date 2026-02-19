@@ -107,6 +107,74 @@ FARSI_YOON = {
 }
 
 
+# ----------------------------
+# Arabic maps (MSA transliteration)
+# ----------------------------
+
+# Initial vowels need a hamza carrier in Arabic
+ARABIC_INITIAL = {"a": "أ", "i": "إي", "u": "أو", "e": "إي", "o": "أو"}
+
+ARABIC_BASE = {
+    "a": "ا", "i": "ي", "u": "و", "e": "ي", "o": "و",
+    "ka": "كا", "ki": "كي", "ku": "كو", "ke": "كي", "ko": "كو",
+    "sa": "سا", "shi": "شي", "su": "سو", "se": "سي", "so": "سو",
+    "ta": "تا", "chi": "تشي", "tsu": "تسو", "tu": "تسو", "te": "تي", "to": "تو",
+    "na": "نا", "ni": "ني", "nu": "نو", "ne": "ني", "no": "نو",
+    "ha": "ها", "hi": "هي", "hu": "هو", "fu": "فو", "he": "هي", "ho": "هو",
+    "ma": "ما", "mi": "مي", "mu": "مو", "me": "مي", "mo": "مو",
+    "ya": "يا", "yu": "يو", "yo": "يو",
+    "ra": "را", "ri": "ري", "ru": "رو", "re": "ري", "ro": "رو",
+    "wa": "وا", "wi": "وي", "we": "وي", "wo": "و",
+    "n": "ن",
+    "ga": "غا", "gi": "غي", "gu": "غو", "ge": "غي", "go": "غو",
+    "za": "زا", "ji": "جي", "zu": "زو", "ze": "زي", "zo": "زو",
+    "da": "دا", "di": "دي", "du": "دو", "de": "دي", "do": "دو",
+    "ba": "با", "bi": "بي", "bu": "بو", "be": "بي", "bo": "بو",
+    "pa": "با", "pi": "بي", "pu": "بو", "pe": "بي", "po": "بو",
+}
+
+ARABIC_YOON = {
+    "kya": "كيا", "kyu": "كيو", "kyo": "كيو",
+    "sha": "شا",  "shu": "شو",  "sho": "شو",
+    "cha": "تشا", "chu": "تشو", "cho": "تشو",
+    "nya": "نيا", "nyu": "نيو", "nyo": "نيو",
+    "hya": "هيا", "hyu": "هيو", "hyo": "هيو",
+    "mya": "ميا", "myu": "ميو", "myo": "ميو",
+    "rya": "ريا", "ryu": "ريو", "ryo": "ريو",
+    "gya": "غيا", "gyu": "غيو", "gyo": "غيو",
+    "ja":  "جا",  "ju":  "جو",  "jo":  "جو",
+    "bya": "بيا", "byu": "بيو", "byo": "بيو",
+    "pya": "بيا", "pyu": "بيو", "pyo": "بيو",
+    "dya": "ديا", "dyu": "ديو", "dyo": "ديو",
+}
+
+
+def _arabify_word(word):
+    """Transliterate a single romanized Japanese word to Arabic script."""
+    w = unicodedata.normalize("NFKC", word).lower()
+    w = w.replace("ā", "a").replace("ī", "i").replace("ū", "u").replace("ē", "e").replace("ō", "o")
+    w = re.sub(r"[^\w]", "", w)
+    w = kana_to_romaji(w)
+    tokens = tokenize_romaji(w)
+    parts = []
+    for idx, t in enumerate(tokens):
+        if t in ARABIC_YOON:
+            parts.append(ARABIC_YOON[t])
+        elif t in ARABIC_BASE:
+            if idx == 0 and t in ARABIC_INITIAL:
+                parts.append(ARABIC_INITIAL[t])
+            else:
+                parts.append(ARABIC_BASE[t])
+    return "".join(parts)
+
+
+def arabify(name):
+    """Convert a romanized Japanese name to Arabic script. Handles multi-word names."""
+    words = name.split()
+    arabic_words = [_arabify_word(w) for w in words if w]
+    return " ".join(w for w in arabic_words if w)
+
+
 def _farsify_word(word):
     """Transliterate a single romanized Japanese word to Farsi script."""
     w = unicodedata.normalize("NFKC", word).lower()
@@ -287,13 +355,16 @@ def format_label(lang, name, is_grand=False):
     if lang == "fa":
         fa_name = farsify(name)
         return f"معبد بزرگ {fa_name}" if is_grand else f"معبد {fa_name}"
+    if lang == "ar":
+        ar_name = arabify(name)
+        return f"معبد {ar_name} الكبير" if is_grand else f"معبد {ar_name}"
     return None
 
 # ----------------------------
 # SPARQL
 # ----------------------------
 
-ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa"]
+ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa", "ar"]
 
 
 def make_sparql(lang_code):
