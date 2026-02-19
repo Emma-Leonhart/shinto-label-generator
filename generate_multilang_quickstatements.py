@@ -358,13 +358,17 @@ def format_label(lang, name, is_grand=False):
     if lang == "ar":
         ar_name = arabify(name)
         return f"معبد {ar_name} الكبير" if is_grand else f"معبد {ar_name}"
+    if lang == "arz":
+        # Egyptian Arabic: identical to MSA except g→ج (ج = /g/ in Egyptian)
+        ar_name = arabify(name).replace("غ", "ج")
+        return f"معبد {ar_name} الكبير" if is_grand else f"معبد {ar_name}"
     return None
 
 # ----------------------------
 # SPARQL
 # ----------------------------
 
-ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa", "ar"]
+ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa", "ar", "arz"]
 
 
 def make_sparql(lang_code):

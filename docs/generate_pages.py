@@ -112,7 +112,7 @@ LANGS = [
       <strong>معبد بزرگ</strong> (grand shrine) for Kuil Agung.</p>
       <p>Example: <em>Kuil Hakone</em> → معبد هاکونه</p>"""),
 
-    ("ar", "Arabic", "العربية", "🇸🇦", """\
+    ("ar", "Arabic (MSA)", "العربية", "🇸🇦", """\
       <p>Fetches shrines missing an Arabic (MSA) label. The extracted name is transliterated
       from romanized Japanese to Arabic script using a syllable-based mapping.
       Key differences from the Farsi mapping:</p>
@@ -126,6 +126,17 @@ LANGS = [
       <p>Prefixed with <strong>معبد</strong> (place of worship) or
       <strong>معبد … الكبير</strong> (grand shrine) for Kuil Agung.</p>
       <p>Example: <em>Kuil Hakone</em> → معبد هاكوني</p>"""),
+
+    ("arz", "Egyptian Arabic", "مصري", "🇪🇬", """\
+      <p>Identical to the MSA Arabic pipeline with one phonological difference:
+      in Egyptian Arabic, ج is pronounced <em>/g/</em> (hard G), so Japanese <em>g</em>
+      maps to ج rather than MSA's غ. The غ→ج substitution is applied after transliteration.</p>
+      <ul>
+        <li><em>ga</em> → جا, <em>gu</em> → جو, <em>gi</em> → جي (vs MSA غا, غو, غي)</li>
+        <li>All other syllables identical to MSA Arabic</li>
+      </ul>
+      <p>Prefixed with <strong>معبد</strong> or <strong>معبد … الكبير</strong> for Kuil Agung.</p>
+      <p>Example: <em>Kuil Kamigamo</em> → معبد كاميجامو (vs MSA كاميغامو)</p>"""),
 ]
 
 PAGE_TEMPLATE = """\
@@ -235,7 +246,7 @@ PAGE_TEMPLATE = """\
 </html>
 """
 
-RTL_LANGS = {"fa", "ar", "he", "ur"}
+RTL_LANGS = {"fa", "ar", "arz", "he", "ur"}
 
 def main():
     for code, english, native, flag, methodology in LANGS:
