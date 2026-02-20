@@ -7,6 +7,7 @@ Languages handled:
   Lithuanian (declension): lt
   Cyrillic (declension): ru, uk
   Farsi (Perso-Arabic script): fa
+  Hindi (Devanagari script): hi
 
 Output: quickstatements/{lang}.txt for each language
 """
@@ -147,6 +148,74 @@ ARABIC_YOON = {
     "pya": "بيا", "pyu": "بيو", "pyo": "بيو",
     "dya": "ديا", "dyu": "ديو", "dyo": "ديو",
 }
+
+
+# ----------------------------
+# Hindi maps (Devanagari script)
+# ----------------------------
+
+# Initial vowels use independent Devanagari vowel letters
+HINDI_INITIAL = {"a": "अ", "i": "इ", "u": "उ", "e": "ए", "o": "ओ"}
+
+HINDI_BASE = {
+    "a": "अ", "i": "इ", "u": "उ", "e": "ए", "o": "ओ",
+    "ka": "क", "ki": "कि", "ku": "कु", "ke": "के", "ko": "को",
+    "sa": "स", "shi": "शि", "su": "सु", "se": "से", "so": "सो",
+    "ta": "त", "chi": "चि", "tsu": "त्सु", "tu": "तु", "te": "ते", "to": "तो",
+    "na": "न", "ni": "नि", "nu": "नु", "ne": "ने", "no": "नो",
+    "ha": "ह", "hi": "हि", "hu": "हु", "fu": "फ़ु", "he": "हे", "ho": "हो",
+    "ma": "म", "mi": "मि", "mu": "मु", "me": "मे", "mo": "मो",
+    "ya": "य", "yu": "यु", "yo": "यो",
+    "ra": "र", "ri": "रि", "ru": "रु", "re": "रे", "ro": "रो",
+    "wa": "व", "wi": "वि", "we": "वे", "wo": "वो",
+    "n": "न",
+    "ga": "ग", "gi": "गि", "gu": "गु", "ge": "गे", "go": "गो",
+    "za": "ज़", "ji": "जि", "zu": "ज़ु", "ze": "ज़े", "zo": "ज़ो",
+    "da": "द", "di": "दि", "du": "दु", "de": "दे", "do": "दो",
+    "ba": "ब", "bi": "बि", "bu": "बु", "be": "बे", "bo": "बो",
+    "pa": "प", "pi": "पि", "pu": "पु", "pe": "पे", "po": "पो",
+}
+
+HINDI_YOON = {
+    "kya": "क्य", "kyu": "क्यु", "kyo": "क्यो",
+    "sha": "श",   "shu": "शु",   "sho": "शो",
+    "cha": "च",   "chu": "चु",   "cho": "चो",
+    "nya": "न्य", "nyu": "न्यु", "nyo": "न्यो",
+    "hya": "ह्य", "hyu": "ह्यु", "hyo": "ह्यो",
+    "mya": "म्य", "myu": "म्यु", "myo": "म्यो",
+    "rya": "र्य", "ryu": "र्यु", "ryo": "र्यो",
+    "gya": "ग्य", "gyu": "ग्यु", "gyo": "ग्यो",
+    "ja":  "ज",   "ju":  "जु",   "jo":  "जो",
+    "bya": "ब्य", "byu": "ब्यु", "byo": "ब्यो",
+    "pya": "प्य", "pyu": "प्यु", "pyo": "प्यो",
+    "dya": "द्य", "dyu": "द्यु", "dyo": "द्यो",
+}
+
+
+def _hindify_word(word):
+    """Transliterate a single romanized Japanese word to Hindi (Devanagari) script."""
+    w = unicodedata.normalize("NFKC", word).lower()
+    w = w.replace("ā", "a").replace("ī", "i").replace("ū", "u").replace("ē", "e").replace("ō", "o")
+    w = re.sub(r"[^\w]", "", w)
+    w = kana_to_romaji(w)
+    tokens = tokenize_romaji(w)
+    parts = []
+    for idx, t in enumerate(tokens):
+        if t in HINDI_YOON:
+            parts.append(HINDI_YOON[t])
+        elif t in HINDI_BASE:
+            if idx == 0 and t in HINDI_INITIAL:
+                parts.append(HINDI_INITIAL[t])
+            else:
+                parts.append(HINDI_BASE[t])
+    return "".join(parts)
+
+
+def hindify(name):
+    """Convert a romanized Japanese name to Hindi (Devanagari) script. Handles multi-word names."""
+    words = name.split()
+    hindi_words = [_hindify_word(w) for w in words if w]
+    return " ".join(w for w in hindi_words if w)
 
 
 def _arabify_word(word):
@@ -362,13 +431,16 @@ def format_label(lang, name, is_grand=False):
         # Egyptian Arabic: identical to MSA except g→ج (ج = /g/ in Egyptian)
         ar_name = arabify(name).replace("غ", "ج")
         return f"معبد {ar_name} الكبير" if is_grand else f"معبد {ar_name}"
+    if lang == "hi":
+        hi_name = hindify(name)
+        return f"{hi_name} महा मंदिर" if is_grand else f"{hi_name} मंदिर"
     return None
 
 # ----------------------------
 # SPARQL
 # ----------------------------
 
-ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa", "ar", "arz"]
+ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa", "ar", "arz", "hi"]
 
 
 def make_sparql(lang_code):
