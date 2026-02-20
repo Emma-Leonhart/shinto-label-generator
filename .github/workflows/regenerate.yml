@@ -44,7 +44,7 @@ jobs:
       - name: Run Indonesian proposal pipeline (Japanese-only shrines)
         run: python generate_indonesian_proposals.py
 
-      - name: Run multilang pipeline (tr/de/nl/es/it/eu/lt/ru/uk/fa/ar/hi)
+      - name: Run multilang pipeline (tr/de/nl/es/it/eu/lt/ru/uk/fa/ar/hi/fr/pt)
         run: python generate_multilang_quickstatements.py
 
       - name: Check for changes in quickstatements/
