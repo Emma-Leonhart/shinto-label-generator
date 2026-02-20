@@ -1,21 +1,27 @@
-# Expansion Plan: Cultural & Deific Entities
+# Expansion Plan: Detailed Entity Labeling Scope
 
-This document outlines the systematic expansion of the label generation pipeline to cover a broader scope of Shinto and Buddhist cultural data on Wikidata.
+This document defines the specific, literal requirements for the next phase of the Wikidata labeling pipeline.
 
-## 1. Engishiki & Jinmyōchō (Q1342448, Q11064932)
-- **Primary Targets**: The **Engishiki** item and all entities it links to.
-- **Jinmyōchō**: The **Engishiki Jinmyōchō** item and all constituent parts linked via the `has part(s)` (P527) property.
-- **Recursive Scope**: Deep labeling for items linked from these parts to ensure complete coverage of the Engishiki historical record.
+## 1. Engishiki System (Q1342448)
+- **Direct Links**: Label the **Engishiki** item itself and every entity it links to via any property.
+- **Jinmyōchō (Q11064932)**:
+    - Label the item itself.
+    - Traverse all items linked via **has part(s)** (P527).
+    - **Recursive Depth**: For every item found via P527, label it AND every entity that *those* items link to.
 
-## 2. Institutional Ranking Systems
-- **Japanese Court Rank (P14005)**: All entities representing historical court ranks.
-- **Modern Shrine Ranking (P13723)**: All specific entities within the modern shrine ranking hierarchy.
+## 2. Institutional Hierarchies & Ranks
+- **Japanese Court Rank (P14005)**: Every entity that is a valid value for this property must be labeled.
+- **Modern Shrine Ranking (P13723)**: Every entity that is a valid value for this property must be labeled.
 
-## 3. Japanese Deities
-- **Shinto Kami**: All items identified as Japanese deities or mythological entities.
-- **Buddhist Deities**: All Buddhist figures associated with Japanese religious practice.
-- **Contextual References**: Comprehensive labeling for entities associated with specific shrines, such as **Tsukiyomi Shrine (Q11516217)**.
+## 3. Deific Entities
+- **Shinto Kami**: Label all Japanese Shinto deities.
+- **Buddhist Deities**: Label all Japanese Buddhist deities.
+- **Scope**: This is exhaustive for all entities identified as Japanese deities.
 
-## 4. Methodology
-- **Systematic Processing**: Apply existing phonological and script-based transliteration pipelines (Devanagari, Cyrillic, Perso-Arabic, Toki Pona, etc.) to regularized naming patterns.
-- **Adaptive Labeling**: Utilize context-aware heuristics and manual verification for unique titles, complex ranks, and specific deity names that fall outside standard shrine/temple suffixes.
+## 4. Shrine-Specific Context: Tsukiyomi Shrine (Q11516217)
+- Using this as a literal requirement: Label every entity and property associated with **Tsukiyomi Shrine (Q11516217)**. This includes its dedicated deities, historical ranks, and any linked geographic or architectural items.
+
+## 5. Execution Logic
+- **Phonological Mapping**: Use the established multilang transliteration engines.
+- **Recursive Discovery**: SPARQL queries will be designed to crawl P527 and subsequent links to ensure no "leaf" nodes in the Engishiki tree are missed.
+- **Systematic Guesswork**: Where official translations are missing, apply the systematic romanization -> script conversion used in the shrine pipeline.
