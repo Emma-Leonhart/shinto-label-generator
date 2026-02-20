@@ -4,3 +4,8 @@ __pycache__/
 
 # Claude Code
 .claude/
+
+# Temporary files
+investigate_ja_only.py
+test_pykakasi.py
+proposed_indonesian_labels.csv

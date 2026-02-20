@@ -30,7 +30,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests hanja opencc-python-reimplemented
+        run: pip install requests hanja opencc-python-reimplemented pykakasi
 
       - name: Run Toki Pona pipeline
         run: python fetch_shrines_tokiponize.py
@@ -41,7 +41,10 @@ jobs:
       - name: Run Chinese pipeline
         run: python generate_chinese_quickstatements.py
 
-      - name: Run multilang pipeline (tr/de/nl/es/it/eu/lt/ru/uk)
+      - name: Run Indonesian proposal pipeline (Japanese-only shrines)
+        run: python generate_indonesian_proposals.py
+
+      - name: Run multilang pipeline (tr/de/nl/es/it/eu/lt/ru/uk/fa/ar/hi)
         run: python generate_multilang_quickstatements.py
 
       - name: Check for changes in quickstatements/

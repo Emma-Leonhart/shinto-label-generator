@@ -15,11 +15,11 @@ Every Shinto shrine, temple, deity, and related entity on Wikidata should have l
 
 Many shrines on Wikidata only have a Japanese label. We need a pipeline to generate proposed Indonesian labels from kanji/kana, which then feeds into all other language pipelines.
 
-- [ ] Build a pipeline that generates Indonesian proposed labels from kanji and kana for Japanese-only shrines
+- [x] Build a pipeline that generates Indonesian proposed labels from kanji and kana for Japanese-only shrines
   - Use furigana/reading data from Wikidata items when available
-- [ ] Output to a dedicated CSV file with proposed Indonesian labels
-- [ ] Use these proposed Indonesian labels as input for all other language pipelines (English, French, and all existing languages)
-- [ ] Keep proposed-label QuickStatements separate (at the bottom of the page / in a distinct section) since they are less established
+- [x] Output to a dedicated CSV file with proposed Indonesian labels
+- [x] Use these proposed Indonesian labels as input for all other language pipelines (English, French, and all existing languages)
+- [x] Keep proposed-label QuickStatements separate (at the bottom of the page / in a distinct section) since they are less established
 
 ## Fill gaps in English, French, and Indonesian labels
 
@@ -45,9 +45,9 @@ Some shrines have labels in some of these languages but not all three — usuall
 
 ## Temple handling
 
-- [ ] Clarify and document current temple handling in the pipeline
-- [ ] Ensure temples are treated consistently across all languages
+- [x] Clarify and document current temple handling in the pipeline (Added support for Wihara prefix and Temple suffix logic)
+- [x] Ensure temples are treated consistently across all languages
 
 ## Build / CI
 
-- [ ] Investigate and fix any build failures in GitHub Actions
+- [x] Investigate and fix any build failures in GitHub Actions

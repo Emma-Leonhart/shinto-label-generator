@@ -1,12 +1,14 @@
 """
-Generate labels in multiple languages for Shinto shrines, all derived from
-Indonesian (id) labels on Wikidata.
+Generate labels in multiple languages for Shinto shrines and Buddhist temples.
+Source: Indonesian (id) labels on Wikidata OR local proposed labels.
 
 Languages handled:
   Simple suffix/prefix: tr, de, nl, es, it, eu
   Lithuanian (declension): lt
   Cyrillic (declension): ru, uk
   Farsi (Perso-Arabic script): fa
+  Arabic (MSA): ar
+  Egyptian Arabic: arz
   Hindi (Devanagari script): hi
 
 Output: quickstatements/{lang}.txt for each language
@@ -16,6 +18,7 @@ import os
 import sys
 import io
 import re
+import csv
 import unicodedata
 import requests
 from tokiponizer import kana_to_romaji, tokenize_romaji
@@ -154,7 +157,6 @@ ARABIC_YOON = {
 # Hindi maps (Devanagari script)
 # ----------------------------
 
-# Initial vowels use independent Devanagari vowel letters
 HINDI_INITIAL = {"a": "अ", "i": "इ", "u": "उ", "e": "ए", "o": "ओ"}
 
 HINDI_BASE = {
@@ -275,15 +277,26 @@ def farsify(name):
 # ----------------------------
 
 def extract_name(id_label):
-    """Extract shrine name from Indonesian label, preserving original casing.
-    Returns (name, is_grand) or None."""
+    """Extract shrine/temple name from Indonesian label, preserving original casing.
+    Returns (name, is_grand, p_type) or None.
+    p_type is 'shrine' or 'temple'."""
     cleaned = re.sub(r'\([^)]*\)', '', id_label)
     cleaned = re.sub(r'\[[^\]]*\]', '', cleaned)
     cleaned = cleaned.strip()
-    for prefix, is_grand in [("Kuil Agung ", True), ("Kuil ", False)]:
+    
+    # Check prefixes
+    # Kuil = Shrine (usually), Wihara = Temple
+    prefixes = [
+        ("Kuil Agung ", True, "shrine"),
+        ("Kuil ", False, "shrine"),
+        ("Wihara Agung ", True, "temple"),
+        ("Wihara ", False, "temple"),
+    ]
+    
+    for prefix, is_grand, p_type in prefixes:
         if cleaned.startswith(prefix):
             name = cleaned[len(prefix):].strip()
-            return (name, is_grand) if name else None
+            return (name, is_grand, p_type) if name else None
     return None
 
 # ----------------------------
@@ -395,45 +408,80 @@ def decline_ukrainian(name):
 # Label formatters per language
 # ----------------------------
 
-def format_label(lang, name, is_grand=False):
-    """Format a shrine name into a target-language label."""
+def format_label(lang, name, is_grand=False, p_type="shrine"):
+    """Format a shrine/temple name into a target-language label."""
+    
+    # Helper for generic temple/shrine words
+    def get_affix():
+        if lang == "tr": return "Büyük Tapınağı" if is_grand else "Tapınağı"
+        if lang == "de": 
+            if p_type == "temple": return "Großtempel" if is_grand else "Tempel"
+            return "Großschrein" if is_grand else "Schrein"
+        if lang == "nl": 
+            if p_type == "temple": return "grote tempel" if is_grand else "tempel"
+            return "-shrijn"
+        if lang == "es":
+            if p_type == "temple": return "Gran Templo" if is_grand else "Templo"
+            return "Gran Santuario" if is_grand else "Santuario"
+        if lang == "it":
+            if p_type == "temple": return "Grande Tempio" if is_grand else "Tempio"
+            return "Grande Santuario" if is_grand else "Santuario"
+        if lang == "eu":
+            if p_type == "temple": return "tenplu nagusia" if is_grand else "tenplua"
+            return "santutegia nagusia" if is_grand else "santutegia"
+        if lang == "lt":
+            if p_type == "temple": return "didžioji šventykla" if is_grand else "šventykla"
+            return "maldykla"
+        if lang == "ru":
+            if p_type == "temple": return "Великий храм" if is_grand else "Храм"
+            return "Большой храм" if is_grand else "Храм"
+        if lang == "uk":
+            if p_type == "temple": return "Великий храм" if is_grand else "Храм"
+            return "Велике святилище" if is_grand else "Святилище"
+        if lang == "fa": return "معبد بزرگ" if is_grand else "معبد"
+        if lang == "ar": return "معبد … الكبير" if is_grand else "معبد"
+        if lang == "arz": return "معبد … الكبير" if is_grand else "معبد"
+        if lang == "hi": return "महा मंदिर" if is_grand else "मंदिर"
+        return ""
+
     if lang == "tr":
-        return f"{name} Büyük Tapınağı" if is_grand else f"{name} Tapınağı"
+        return f"{name} {get_affix()}"
     if lang == "de":
-        return f"{name} Großschrein" if is_grand else f"{name} Schrein"
+        if p_type == "temple": return f"{name}-{get_affix()}" # e.g. Senso-Tempel
+        return f"{name} {get_affix()}"
     if lang == "nl":
-        return f"{name}-shrijn"   # no distinction
+        if p_type == "temple": return f"{name}-{get_affix()}"
+        return f"{name}{get_affix()}" # Ise-shrijn
     if lang == "es":
-        return f"Gran Santuario {name}" if is_grand else f"Santuario {name}"
+        return f"{get_affix()} {name}"
     if lang == "it":
-        return f"Grande Santuario {name}" if is_grand else f"Santuario {name}"
+        return f"{get_affix()} {name}"
     if lang == "eu":
-        return f"{name} santutegia nagusia" if is_grand else f"{name} santutegia"
+        return f"{name} {get_affix()}"
     if lang == "lt":
         lt_name = lithuanize(name)
         lt_name = decline_lithuanian(lt_name)
-        return f"{lt_name} maldykla"  # no distinction
+        return f"{lt_name} {get_affix()}"
     if lang == "ru":
         cy_name = cyrillicize(name, "ru")
         cy_name = decline_russian(cy_name)
-        return f"Большой храм {cy_name}" if is_grand else f"Храм {cy_name}"
+        return f"{get_affix()} {cy_name}"
     if lang == "uk":
         cy_name = cyrillicize(name, "uk")
         cy_name = decline_ukrainian(cy_name)
-        return f"Велике святилище {cy_name}" if is_grand else f"Святилище {cy_name}"
+        return f"{get_affix()} {cy_name}"
     if lang == "fa":
         fa_name = farsify(name)
-        return f"معبد بزرگ {fa_name}" if is_grand else f"معبد {fa_name}"
-    if lang == "ar":
+        return f"{get_affix()} {fa_name}"
+    if lang in ["ar", "arz"]:
         ar_name = arabify(name)
-        return f"معبد {ar_name} الكبير" if is_grand else f"معبد {ar_name}"
-    if lang == "arz":
-        # Egyptian Arabic: identical to MSA except g→ج (ج = /g/ in Egyptian)
-        ar_name = arabify(name).replace("غ", "ج")
-        return f"معبد {ar_name} الكبير" if is_grand else f"معبد {ar_name}"
+        if lang == "arz":
+            ar_name = ar_name.replace("غ", "ج")
+        base = f"معبد {ar_name}"
+        return f"{base} الكبير" if is_grand else base
     if lang == "hi":
         hi_name = hindify(name)
-        return f"{hi_name} महा मंदिर" if is_grand else f"{hi_name} मंदिर"
+        return f"{hi_name} {get_affix()}"
     return None
 
 # ----------------------------
@@ -475,6 +523,20 @@ def run_sparql(query, label):
     print(f"  Got {len(results)} results.")
     return results
 
+def load_proposals():
+    """Load local Indonesian label proposals."""
+    path = "proposed_indonesian_labels.csv"
+    if not os.path.exists(path):
+        return []
+    
+    proposals = []
+    with open(path, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            proposals.append(row)
+    print(f"  Loaded {len(proposals)} local proposals.")
+    return proposals
+
 # ----------------------------
 # Main
 # ----------------------------
@@ -482,16 +544,20 @@ def run_sparql(query, label):
 def main():
     outdir = "quickstatements"
     os.makedirs(outdir, exist_ok=True)
+    
+    # Load proposals once
+    local_proposals = load_proposals()
 
     for lang in ALL_LANGS:
         print(f"\n=== {lang.upper()} ===")
-        results = run_sparql(make_sparql(lang), f"shrines missing {lang} label")
-
-        # Deduplicate by QID
-        seen = set()
+        
         rows = []
+        seen = set()
+        
+        # 1. From Wikidata
+        results = run_sparql(make_sparql(lang), f"shrines missing {lang} label")
         skipped = 0
-
+        
         for binding in results:
             qid = binding["item"]["value"].split("/")[-1]
             if qid in seen:
@@ -503,13 +569,42 @@ def main():
             if not extracted:
                 skipped += 1
                 continue
-            name, is_grand = extracted
+            name, is_grand, p_type = extracted
 
-            label = format_label(lang, name, is_grand)
+            label = format_label(lang, name, is_grand, p_type)
             if label:
                 rows.append({"qid": qid, "label": label})
             else:
                 skipped += 1
+                
+        print(f"  From Wikidata: {len(rows)} rows")
+
+        # 2. From Local Proposals
+        # These are items that have JA label but NO ID label on Wikidata.
+        # So they won't be in the SPARQL results (which require ID label).
+        # We assume they also don't have the target language label (since they are 'Japanese-only').
+        
+        added_local = 0
+        for p in local_proposals:
+            qid = p["qid"]
+            if qid in seen:
+                continue
+            
+            # Use the proposed ID label as source
+            id_label = p["proposed_label"]
+            # We also have p["type"] but let's re-extract to be safe/consistent
+            extracted = extract_name(id_label)
+            if not extracted:
+                continue
+            name, is_grand, p_type = extracted
+            
+            label = format_label(lang, name, is_grand, p_type)
+            if label:
+                rows.append({"qid": qid, "label": label})
+                seen.add(qid)
+                added_local += 1
+        
+        print(f"  From Local Proposals: {added_local} rows")
 
         # Write QuickStatements
         filepath = os.path.join(outdir, f"{lang}.txt")
@@ -518,7 +613,7 @@ def main():
                 escaped = row["label"].replace('"', '""')
                 f.write(f'{row["qid"]}\tL{lang}\t"{escaped}"\n')
 
-        print(f"  Wrote {len(rows)} to {filepath} (skipped {skipped})")
+        print(f"  Total: Wrote {len(rows)} to {filepath}")
 
         # Sample
         for row in rows[:5]:
