@@ -1,3 +1,17 @@
+
+# new things
+
+make this file nicer
+
+all languages here are what we need as our long term goal
+
+https://www.wikidata.org/wiki/Q687168
+
+
+
+
+## old possibly implemented thing
+
 okay so I'm explaining
 
 OK so I am currently writing this on my phone with speech to text so it'll be a bit in precise but basically I am trying to explain what is going on with this repository I wanna watch it so what I wanted to change with this repository is basically well firstly there was a build failure and I'm not sure if the build is working now but the build failure is definitely an annoying thing that I should be dealing with as for as for the main stuff going on with this suppository though as for the main stuff going on with it basically there are some languages that I want to introduce that are not on the repository right now for example I want to introduce Hindi like ideal ideally I would wanna basically make this supply for like the top 10 most spoken languages or top 20 most spoken languages but the thing is I don't just want to do that you see what I also want to do is I want to I want to start proposing English/Indonesian labels for the shrine for about 10,000 or so to shrines that currently only have a Japanese label so this is this is this is currently a lot so the history of the Indonesian labels is that I mass created English French and Indonesian Indonesian labels from the from the existing articles on shrines search from the existing Japanese labels mini labels but the best majority of them the reason why I stopped trying to mass translate all English labels was that I the main reason why I decided to stop trying to mass translate all English labels was basically because I found shrines were being added too fast for me to add English labels so a lot of the a lot of these shrines that currently have English labels but do not have Indonesian or French labels are ones that are ones that were strange edge cases like parts of shrines or things like that 
