@@ -137,6 +137,25 @@ LANGS = [
       </ul>
       <p>Prefixed with <strong>معبد</strong> or <strong>معبد … الكبير</strong> for Kuil Agung.</p>
       <p>Example: <em>Kuil Kamigamo</em> → معبد كاميجامو (vs MSA كاميغامو)</p>"""),
+
+    ("hi", "Hindi", "हिन्दी", "🇮🇳", """\
+      <p>Fetches shrines missing a Hindi label. The extracted name is transliterated
+      from romanized Japanese to Devanagari script using a syllable-based mapping:</p>
+      <ul>
+        <li>Vowels at word-start use independent Devanagari vowel letters:
+        <em>a</em> → अ, <em>i</em> → इ, <em>u</em> → उ, <em>e</em> → ए, <em>o</em> → ओ</li>
+        <li>Consonant syllables use inherent-vowel notation: <em>ka</em> → क, <em>ki</em> → कि,
+        <em>ku</em> → कु, <em>ke</em> → के, <em>ko</em> → को</li>
+        <li>Sibilants and affricates: <em>shi</em> → शि (श), <em>chi</em> → चि (च),
+        <em>tsu</em> → त्सु, <em>fu</em> → फ़ु</li>
+        <li>Voiced stops preserved: <em>ga</em> → ग, <em>ba</em> → ब, <em>da</em> → द</li>
+        <li>Yōon syllables use consonant clusters: <em>kya</em> → क्य, <em>sha</em> → श,
+        <em>ryu</em> → र्यु</li>
+        <li>Moraic nasal ん → न</li>
+      </ul>
+      <p>Appended with <strong>मंदिर</strong> (shrine/temple) or
+      <strong>महा मंदिर</strong> (grand shrine) for Kuil Agung.</p>
+      <p>Example: <em>Kuil Ise</em> → <em>इसे मंदिर</em></p>"""),
 ]
 
 PAGE_TEMPLATE = """\
