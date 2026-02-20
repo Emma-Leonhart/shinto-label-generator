@@ -2,7 +2,7 @@
 
 Generates multi-language labels for Shinto shrines and Buddhist temples sourced from Wikidata. Currently produces labels in **Toki Pona**, **Korean**, **Chinese**, **German**, **Spanish**, **Basque**, **Italian**, **Lithuanian**, **Dutch**, **Russian**, **Turkish**, and **Ukrainian**.
 
-**GitHub Pages:** Browse and copy QuickStatements output at [emma-leonhart.github.io/shrine-label-generator](https://emma-leonhart.github.io/shrine-label-generator)
+**GitHub Pages:** Browse and copy QuickStatements output at [emma-leonhart.github.io/shinto-label-generator](https://emma-leonhart.github.io/shrine-label-generator)
 
 The Toki Pona module converts Japanese names (Hepburn romanization, Nihon-shiki, Hiragana, Katakana) into Toki Pona phonology, following a custom phonological mapping system designed to preserve Japanese etymological distinctions (Yotsugana, H→K/P positional rules, etc.)
 
