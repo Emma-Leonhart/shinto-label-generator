@@ -6,6 +6,8 @@ Generates multi-language labels for Shinto shrines and Buddhist temples sourced 
 
 The Toki Pona module converts Japanese names (Hepburn romanization, Nihon-shiki, Hiragana, Katakana) into Toki Pona phonology, following a custom phonological mapping system designed to preserve Japanese etymological distinctions (Yotsugana, H→K/P positional rules, etc.)
 
+The Russian Ukrainian and Lithuanian modules translate based on genitive cases
+
 ## Files
 
 - `tokiponizer.py` — Core Toki Pona conversion library. Takes Japanese text in any script and produces Toki Pona-compatible name(s). Returns multiple variants when `zu` ambiguity exists.
