@@ -427,8 +427,8 @@ def format_label(lang, name, is_grand=False, p_type="shrine"):
             if p_type == "temple": return "Grande Tempio" if is_grand else "Tempio"
             return "Grande Santuario" if is_grand else "Santuario"
         if lang == "eu":
-            if p_type == "temple": return "tenplu nagusia" if is_grand else "tenplua"
-            return "santutegia nagusia" if is_grand else "santutegia"
+            if p_type == "temple": return "tenplu handia" if is_grand else "tenplua"
+            return "santutegi handia" if is_grand else "santutegia"
         if lang == "lt":
             if p_type == "temple": return "didžioji šventykla" if is_grand else "šventykla"
             return "maldykla"
@@ -438,6 +438,12 @@ def format_label(lang, name, is_grand=False, p_type="shrine"):
         if lang == "uk":
             if p_type == "temple": return "Великий храм" if is_grand else "Храм"
             return "Велике святилище" if is_grand else "Святилище"
+        if lang == "fr":
+            if p_type == "temple": return "Grand Temple" if is_grand else "Temple"
+            return "Grand Sanctuaire" if is_grand else "Sanctuaire"
+        if lang == "pt":
+            if p_type == "temple": return "Grande Templo" if is_grand else "Templo"
+            return "Grande Santuário" if is_grand else "Santuário"
         if lang == "fa": return "معبد بزرگ" if is_grand else "معبد"
         if lang == "ar": return "معبد … الكبير" if is_grand else "معبد"
         if lang == "arz": return "معبد … الكبير" if is_grand else "معبد"
@@ -452,9 +458,7 @@ def format_label(lang, name, is_grand=False, p_type="shrine"):
     if lang == "nl":
         if p_type == "temple": return f"{name}-{get_affix()}"
         return f"{name}{get_affix()}" # Ise-shrijn
-    if lang == "es":
-        return f"{get_affix()} {name}"
-    if lang == "it":
+    if lang in ["es", "it", "fr", "pt"]:
         return f"{get_affix()} {name}"
     if lang == "eu":
         return f"{name} {get_affix()}"
@@ -488,7 +492,7 @@ def format_label(lang, name, is_grand=False, p_type="shrine"):
 # SPARQL
 # ----------------------------
 
-ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa", "ar", "arz", "hi"]
+ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa", "ar", "arz", "hi", "fr", "pt"]
 
 
 def make_sparql(lang_code):

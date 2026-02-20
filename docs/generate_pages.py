@@ -6,6 +6,8 @@ Also called by the GitHub Actions regenerate workflow.
 
 import os
 import html
+import re
+from datetime import datetime
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS_DIR  = os.path.join(REPO_ROOT, "docs")
@@ -47,97 +49,6 @@ LANGS = [
       </ol>
       <p>Pure Kanji labels pass through with only the shinjitai→simplified step.</p>"""),
 
-    ("de", "German", "Deutsch", "🇩🇪", """\
-      <p>Fetches shrines missing a German label from Wikidata. Extracts the proper name
-      from the Indonesian label (stripping "Kuil" / "Kuil Agung" prefix) and appends
-      <strong>Schrein</strong>.</p>
-      <p>Example: <em>Kuil Ise</em> → <em>Ise Schrein</em></p>"""),
-
-    ("nl", "Dutch", "Nederlands", "🇳🇱", """\
-      <p>Fetches shrines missing a Dutch label. Extracts the name from the Indonesian
-      label and appends <strong>-shrijn</strong>.</p>
-      <p>Example: <em>Kuil Ise</em> → <em>Ise-shrijn</em></p>"""),
-
-    ("es", "Spanish", "Español", "🇪🇸", """\
-      <p>Fetches shrines missing a Spanish label. Prepends
-      <strong>Santuario</strong> to the extracted name.</p>
-      <p>Example: <em>Kuil Ise</em> → <em>Santuario Ise</em></p>"""),
-
-    ("it", "Italian", "Italiano", "🇮🇹", """\
-      <p>Fetches shrines missing an Italian label. Prepends
-      <strong>Santuario</strong> to the extracted name.</p>
-      <p>Example: <em>Kuil Ise</em> → <em>Santuario Ise</em></p>"""),
-
-    ("tr", "Turkish", "Türkçe", "🇹🇷", """\
-      <p>Fetches shrines missing a Turkish label. Appends
-      <strong>Tapınağı</strong> (shrine/temple) to the extracted name.</p>
-      <p>Example: <em>Kuil Ise</em> → <em>Ise Tapınağı</em></p>"""),
-
-    ("ru", "Russian", "Русский", "🇷🇺", """\
-      <p>Fetches shrines missing a Russian label. The extracted name is transliterated
-      to Cyrillic using the <strong>Polivanov system</strong> (the standard for
-      Japanese→Russian in Russian linguistics). The final word of the name is then
-      declined into the genitive case. Prefixed with <strong>Храм</strong> (temple/shrine).</p>
-      <p>Example: <em>Kuil Ise</em> → <em>Храм Исэ</em></p>"""),
-
-    ("uk", "Ukrainian", "Українська", "🇺🇦", """\
-      <p>Fetches shrines missing a Ukrainian label. Uses the same Polivanov-based
-      Cyrillic transliteration as Russian, with Ukrainian-specific substitutions
-      (э→е, и→і). The final word is declined into the genitive case. Prefixed with
-      <strong>Святилище</strong> (sanctuary).</p>
-      <p>Example: <em>Kuil Ise</em> → <em>Святилище Ісе</em></p>"""),
-
-    ("lt", "Lithuanian", "Lietuvių", "🇱🇹", """\
-      <p>Fetches shrines missing a Lithuanian label. The name undergoes phonological
-      adaptation (ch→č, sh→š, w→v) and the final word is declined into the genitive
-      case using Lithuanian vowel-ending rules. The word <strong>maldykla</strong>
-      (place of worship / shrine) is appended.</p>
-      <p>Example: <em>Kuil Ise</em> → <em>Isės maldykla</em></p>"""),
-
-    ("eu", "Basque", "Euskara", "🏔️", """\
-      <p>Fetches shrines missing a Basque label. Appends
-      <strong>santutegia</strong> (sanctuary) to the extracted name.</p>
-      <p>Example: <em>Kuil Ise</em> → <em>Ise santutegia</em></p>"""),
-
-    ("fa", "Farsi", "فارسی", "🇮🇷", """\
-      <p>Fetches shrines missing a Farsi label. The extracted name is transliterated
-      from romanized Japanese to Perso-Arabic script using a syllable-based mapping:</p>
-      <ul>
-        <li>Vowels at word-start take an alef carrier: <em>i</em> → ای, <em>u</em> → او</li>
-        <li>Yōon syllables: <em>kyo</em> → کیو, <em>sha</em> → شا, <em>chi</em> → چی</li>
-        <li>Voiced stops preserved: <em>ga</em> → گا, <em>ba</em> → با, <em>da</em> → دا</li>
-        <li><em>tsu</em> → تسو, <em>fu</em> → فو, <em>ji</em> → جی</li>
-      </ul>
-      <p>Prefixed with <strong>معبد</strong> (shrine) or
-      <strong>معبد بزرگ</strong> (grand shrine) for Kuil Agung.</p>
-      <p>Example: <em>Kuil Hakone</em> → معبد هاکونه</p>"""),
-
-    ("ar", "Arabic (MSA)", "العربية", "🇸🇦", """\
-      <p>Fetches shrines missing an Arabic (MSA) label. The extracted name is transliterated
-      from romanized Japanese to Arabic script using a syllable-based mapping.
-      Key differences from the Farsi mapping:</p>
-      <ul>
-        <li>Initial vowels take a hamza carrier: <em>a</em> → أ, <em>i</em> → إي, <em>u</em> → أو</li>
-        <li><em>g</em> → غ (ghain — Arabic has no گ): <em>ga</em> → غا, <em>gu</em> → غو</li>
-        <li><em>ch</em> → تش (two letters — Arabic has no چ): <em>chi</em> → تشي</li>
-        <li><em>p</em> → ب (Arabic has no پ): <em>pa</em> → با</li>
-        <li>Mid-word <em>e</em> → ي (same as <em>i</em>, not ه as in Farsi)</li>
-      </ul>
-      <p>Prefixed with <strong>معبد</strong> (place of worship) or
-      <strong>معبد … الكبير</strong> (grand shrine) for Kuil Agung.</p>
-      <p>Example: <em>Kuil Hakone</em> → معبد هاكوني</p>"""),
-
-    ("arz", "Egyptian Arabic", "مصري", "🇪🇬", """\
-      <p>Identical to the MSA Arabic pipeline with one phonological difference:
-      in Egyptian Arabic, ج is pronounced <em>/g/</em> (hard G), so Japanese <em>g</em>
-      maps to ج rather than MSA's غ. The غ→ج substitution is applied after transliteration.</p>
-      <ul>
-        <li><em>ga</em> → جا, <em>gu</em> → جو, <em>gi</em> → جي (vs MSA غا, غو, غي)</li>
-        <li>All other syllables identical to MSA Arabic</li>
-      </ul>
-      <p>Prefixed with <strong>معبد</strong> or <strong>معبد … الكبير</strong> for Kuil Agung.</p>
-      <p>Example: <em>Kuil Kamigamo</em> → معبد كاميجامو (vs MSA كاميغامو)</p>"""),
-
     ("hi", "Hindi", "हिन्दी", "🇮🇳", """\
       <p>Fetches shrines missing a Hindi label. The extracted name is transliterated
       from romanized Japanese to Devanagari script using a syllable-based mapping:</p>
@@ -156,6 +67,72 @@ LANGS = [
       <p>Appended with <strong>मंदिर</strong> (shrine/temple) or
       <strong>महा मंदिर</strong> (grand shrine) for Kuil Agung.</p>
       <p>Example: <em>Kuil Ise</em> → <em>इसे मंदिर</em></p>"""),
+
+    ("de", "German", "Deutsch", "🇩🇪", """\
+      <p>Fetches shrines missing a German label. Extracts the proper name
+      from the Indonesian label (stripping "Kuil" / "Kuil Agung" prefix) and appends
+      <strong>Schrein</strong> (shrine) or <strong>Tempel</strong> (temple).</p>"""),
+
+    ("fr", "French", "Français", "🇫🇷", """\
+      <p>Fetches shrines missing a French label. Prepends 
+      <strong>Sanctuaire</strong> (shrine) or <strong>Temple</strong> (temple) to the name.</p>"""),
+
+    ("pt", "Portuguese", "Português", "🇵🇹", """\
+      <p>Fetches shrines missing a Portuguese label. Prepends 
+      <strong>Santuário</strong> (shrine) or <strong>Templo</strong> (temple) to the name.</p>"""),
+
+    ("nl", "Dutch", "Nederlands", "🇳🇱", """\
+      <p>Fetches shrines missing a Dutch label. Extracts the name from the Indonesian
+      label and appends <strong>-shrijn</strong> (shrine) or <strong>tempel</strong> (temple).</p>"""),
+
+    ("es", "Spanish", "Español", "🇪🇸", """\
+      <p>Fetches shrines missing a Spanish label. Prepends
+      <strong>Santuario</strong> (shrine) or <strong>Templo</strong> (temple) to the name.</p>"""),
+
+    ("it", "Italian", "Italiano", "🇮🇹", """\
+      <p>Fetches shrines missing an Italian label. Prepends
+      <strong>Santuario</strong> (shrine) or <strong>Tempio</strong> (temple) to the name.</p>"""),
+
+    ("tr", "Turkish", "Türkçe", "🇹🇷", """\
+      <p>Fetches shrines missing a Turkish label. Appends
+      <strong>Tapınağı</strong> (shrine/temple) to the extracted name.</p>"""),
+
+    ("ru", "Russian", "Русский", "🇷🇺", """\
+      <p>Fetches shrines missing a Russian label. The extracted name is transliterated
+      to Cyrillic using the <strong>Polivanov system</strong>. The final word
+      is declined into the genitive case. Prefixed with <strong>Храм</strong> (temple/shrine).</p>"""),
+
+    ("uk", "Ukrainian", "Українська", "🇺🇦", """\
+      <p>Fetches shrines missing a Ukrainian label. Uses the same Polivanov-based
+      Cyrillic transliteration as Russian, with Ukrainian-specific substitutions.
+      Prefixed with <strong>Святилище</strong> (shrine) or <strong>Храм</strong> (temple).</p>"""),
+
+    ("lt", "Lithuanian", "Lietuvių", "🇱🇹", """\
+      <p>Fetches shrines missing a Lithuanian label. The name undergoes phonological
+      adaptation (ch→č, sh→š, w→v) and the final word is declined into the genitive
+      case using Lithuanian vowel-ending rules. The word <strong>maldykla</strong>
+      (shrine) or <strong>šventykla</strong> (temple) is appended.</p>"""),
+
+    ("eu", "Basque", "Euskara", "🏔️", """\
+      <p>Fetches shrines missing a Basque label. Appends
+      <strong>santutegia</strong> (shrine) or <strong>tenplua</strong> (temple).
+      Grand shrines use <strong>handia</strong> (e.g. santutegi handia).</p>"""),
+
+    ("fa", "Farsi", "فارسی", "🇮🇷", """\
+      <p>Fetches shrines missing a Farsi label. The extracted name is transliterated
+      from romanized Japanese to Perso-Arabic script using a syllable-based mapping.</p>"""),
+
+    ("ar", "Arabic (MSA)", "العربية", "🇸🇦", """\
+      <p>Fetches shrines missing an Arabic (MSA) label. The extracted name is transliterated
+      from romanized Japanese to Arabic script using a syllable-based mapping.</p>"""),
+
+    ("arz", "Egyptian Arabic", "مصري", "🇪🇬", """\
+      <p>Identical to the MSA Arabic pipeline with one phonological difference:
+      in Egyptian Arabic, Japanese <em>g</em> maps to <strong>ج</strong>.</p>"""),
+
+    ("id_proposed", "Indonesian (Proposed)", "Bahasa Indonesia", "🇮🇩", """\
+      <p>Proposed Indonesian labels for Japanese-only shrines. Generated from 
+      Japanese Kanji/Kana using <code>pykakasi</code> for Romaji conversion.</p>"""),
 ]
 
 PAGE_TEMPLATE = """\
@@ -268,15 +245,32 @@ PAGE_TEMPLATE = """\
 RTL_LANGS = {"fa", "ar", "arz", "he", "ur"}
 
 def main():
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    
+    # Update index.html date
+    index_path = os.path.join(DOCS_DIR, "index.html")
+    if os.path.exists(index_path):
+        with open(index_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        content = re.sub(r"last pipeline run \d{4}-\d{2}-\d{2}", f"last pipeline run {today}", content)
+        with open(index_path, "w", encoding="utf-8", newline="\n") as f:
+            f.write(content)
+        print(f"  Updated date in {index_path} to {today}")
+
     for code, english, native, flag, methodology in LANGS:
         txt_path = os.path.join(QS_DIR, code + ".txt")
+        if not os.path.exists(txt_path):
+            print(f"  Warning: {txt_path} not found, skipping.")
+            continue
+            
         raw = open(txt_path, encoding="utf-8").read()
-        count = len([l for l in raw.splitlines() if l.strip()])
+        # Count only non-empty lines that don't start with #
+        count = len([l for l in raw.splitlines() if l.strip() and not l.strip().startswith("#")])
         escaped = html.escape(raw)
 
         rtl_attr = ' dir="rtl"' if code in RTL_LANGS else ""
         out = PAGE_TEMPLATE.format(
-            code=code,
+            code=code.split("_")[0],
             english=english,
             native=native,
             flag=flag,
