@@ -38,6 +38,8 @@ Some shrines have labels in some of these languages but not all three — usuall
 
 ## Expand beyond shrines
 
+See **[PLAN.md](PLAN.md)** for the formal expansion roadmap.
+
 - [ ] Translate names of deities (kami, Buddhas) into all supported languages
 - [ ] Translate Engishiki-related entities (shrine ranks, etc.) into all supported languages
 - [ ] Translate Wikidata property names into all supported languages (investigate whether QuickStatements can edit property labels)
