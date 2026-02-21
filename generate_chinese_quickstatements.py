@@ -202,13 +202,14 @@ def main():
         else:
             skipped += 1
 
-    # Write QuickStatements
+    # Write QuickStatements with comments
     outdir = "quickstatements"
     os.makedirs(outdir, exist_ok=True)
     filepath = os.path.join(outdir, "zh.txt")
     with open(filepath, "w", encoding="utf-8", newline="\n") as f:
         for row in rows:
             label = row["zh_label"].replace('"', '""')
+            f.write(f'# Source: JA "{row["ja_label"]}"\n')
             f.write(f'{row["qid"]}\tLzh\t"{label}"\n')
 
     print(f"\nDone! Wrote {len(rows)} Chinese QuickStatements to {filepath}")

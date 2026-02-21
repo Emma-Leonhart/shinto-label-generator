@@ -164,7 +164,11 @@ def main():
             if ja_label:
                 ko_label = japanese_to_korean_hanja(ja_label)
                 if ko_label:
-                    rows.append({"qid": qid, "ko_label": ko_label})
+                    rows.append({
+                        "qid": qid, 
+                        "ko_label": ko_label, 
+                        "comment": f'# Source: JA "{ja_label}" (hanja reading fallback)'
+                    })
                 else:
                     skipped += 1
             else:
@@ -175,7 +179,11 @@ def main():
         suffix = KOREAN_SUFFIX.get(prefix, "신사")
         korean_name = koreanize(cleaned_name)
         if korean_name:
-            rows.append({"qid": qid, "ko_label": f"{korean_name} {suffix}"})
+            rows.append({
+                "qid": qid, 
+                "ko_label": f"{korean_name} {suffix}",
+                "comment": f'# Source: ID "{id_label}" (romanization)'
+            })
         else:
             skipped += 1
 
@@ -193,7 +201,11 @@ def main():
         ja_label = binding["jaLabel"]["value"]
         ko_label = japanese_to_korean_hanja(ja_label)
         if ko_label:
-            rows.append({"qid": qid, "ko_label": ko_label})
+            rows.append({
+                "qid": qid, 
+                "ko_label": ko_label,
+                "comment": f'# Source: JA "{ja_label}" (hanja reading)'
+            })
         else:
             skipped += 1
 
@@ -206,6 +218,7 @@ def main():
     with open(filepath, "w", encoding="utf-8", newline="\n") as f:
         for row in rows:
             label = row["ko_label"].replace('"', '""')
+            f.write(f'{row["comment"]}\n')
             f.write(f'{row["qid"]}\tLko\t"{label}"\n')
 
     print(f"\nDone! Wrote {len(rows)} Korean QuickStatements to {filepath}")

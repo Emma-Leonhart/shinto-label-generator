@@ -95,11 +95,21 @@ def to_romaji(text):
     # result is a list of dicts with keys like 'orig', 'hira', 'kana', 'hepburn', 'kunrei', 'passport'
     
     romaji_parts = [item['hepburn'] for item in result]
-    # Join with space or not? Japanese names are usually single block.
-    # pykakasi separates words based on its dictionary.
-    # e.g. "Meiji Jingu" -> ['meiji', 'jingu']
-    # We probably want spaces for readability in "Kuil Meiji Jingu".
-    return " ".join(romaji_parts).title()
+    # Join with space for readability
+    name = " ".join(romaji_parts).title()
+    
+    # Strip common Japanese shrine/temple suffixes to avoid redundancy in "Kuil [Name]"
+    # e.g. "Meiji Jingu" -> "Meiji", "Senso Ji" -> "Senso"
+    suffixes = [
+        " Jinja", " Jingu", " Taisha", " Tenmangu", " Gu", 
+        " Ji", " Tera", " Dera", " In", " An"
+    ]
+    for suffix in suffixes:
+        if name.endswith(suffix):
+            name = name[:-len(suffix)].strip()
+            break
+            
+    return name
 
 def generate_label(romaji, item_type):
     """Generate Indonesian label: Kuil [Name] or Wihara [Name]."""

@@ -147,7 +147,12 @@ def write_quickstatements(rows, outdir="quickstatements"):
         filepath = os.path.join(outdir, f"{lang}.txt")
         with open(filepath, "w", encoding="utf-8", newline="\n") as f:
             for row in lang_rows:
+                comment = f'# Source: {row["source_lang"]} "{row["source_label"]}"'
+                if row.get("en_label"):
+                    comment += f' | EN "{row["en_label"]}"'
+                
                 label = row["toki_pona_label"].replace('"', '""')
+                f.write(f'{comment}\n')
                 f.write(f'{row["qid"]}\tL{lang}\t"{label}"\n')
         written[lang] = filepath
     return written
