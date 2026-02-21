@@ -31,10 +31,11 @@ Some shrines have labels in some of these languages but not all three — usuall
 
 ## QuickStatements transparency
 
-- [ ] Add comments to QuickStatements output showing the source/derivation of each label
-  - Most languages derive from the Indonesian label — show the Indonesian and English labels alongside
-  - Chinese labels derive from Japanese kanji — show the Japanese source
-  - Korean labels should note whether they come from sino-Korean reading (kanji) or romanization (Indonesian label)
+- [x] Add comments to QuickStatements output showing the source/derivation of each label
+  - [x] Most languages (de, es, tr, etc.) now emit `# Source: ID "…" | EN "…"` above each entry
+  - [x] Local-proposal rows emit `# Source (proposed): JA "…" -> ID "…"` to distinguish them
+  - [x] Chinese labels derive from Japanese kanji — `# Source: JA "…"` already in zh.txt
+  - [x] Korean labels already note path (romanization vs. sino-Korean) — `# Source: ID "…" (romanization)` in ko.txt
 
 ## Expand beyond shrines
 

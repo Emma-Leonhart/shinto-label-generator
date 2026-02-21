@@ -497,7 +497,7 @@ ALL_LANGS = ["tr", "de", "nl", "es", "it", "eu", "lt", "ru", "uk", "fa", "ar", "
 
 def make_sparql(lang_code):
     return f"""
-SELECT DISTINCT ?item ?idLabel WHERE {{
+SELECT DISTINCT ?item ?idLabel ?enLabel WHERE {{
   {{
     ?item wdt:P31/wdt:P279* wd:Q845945 .
   }}
@@ -507,6 +507,7 @@ SELECT DISTINCT ?item ?idLabel WHERE {{
     ?item wdt:P17 wd:Q17 .
   }}
   ?item rdfs:label ?idLabel . FILTER(LANG(?idLabel) = "id")
+  OPTIONAL {{ ?item rdfs:label ?enLabel . FILTER(LANG(?enLabel) = "en") }}
   FILTER NOT EXISTS {{ ?item rdfs:label ?existing . FILTER(LANG(?existing) = "{lang_code}") }}
 }}
 ORDER BY ?item
@@ -569,6 +570,7 @@ def main():
             seen.add(qid)
 
             id_label = binding["idLabel"]["value"]
+            en_label = binding.get("enLabel", {}).get("value", "")
             extracted = extract_name(id_label)
             if not extracted:
                 skipped += 1
@@ -577,7 +579,7 @@ def main():
 
             label = format_label(lang, name, is_grand, p_type)
             if label:
-                rows.append({"qid": qid, "label": label})
+                rows.append({"qid": qid, "label": label, "id_source": id_label, "en_source": en_label})
             else:
                 skipped += 1
                 
@@ -604,17 +606,30 @@ def main():
             
             label = format_label(lang, name, is_grand, p_type)
             if label:
-                rows.append({"qid": qid, "label": label})
+                # For proposals: show the JA source and the proposed ID label
+                comment = f'# Source (proposed): JA "{p["ja_label"]}"'
+                if p.get("en_label"):
+                    comment += f' | EN "{p["en_label"]}"'
+                comment += f' -> ID "{p["proposed_label"]}"'
+                rows.append({"qid": qid, "label": label, "id_source": p["proposed_label"], "en_source": p.get("en_label", ""), "comment": comment})
                 seen.add(qid)
                 added_local += 1
         
         print(f"  From Local Proposals: {added_local} rows")
 
-        # Write QuickStatements
+        # Write QuickStatements with source annotations
         filepath = os.path.join(outdir, f"{lang}.txt")
         with open(filepath, "w", encoding="utf-8", newline="\n") as f:
             for row in rows:
                 escaped = row["label"].replace('"', '""')
+                if "comment" in row:
+                    # Local-proposal rows carry a pre-built comment
+                    f.write(f'{row["comment"]}\n')
+                else:
+                    comment = f'# Source: ID "{row["id_source"]}"'
+                    if row.get("en_source"):
+                        comment += f' | EN "{row["en_source"]}"'
+                    f.write(f'{comment}\n')
                 f.write(f'{row["qid"]}\tL{lang}\t"{escaped}"\n')
 
         print(f"  Total: Wrote {len(rows)} to {filepath}")
