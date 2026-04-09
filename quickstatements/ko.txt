@@ -5502,7 +5502,7 @@ Q11419885	Lko	"시쇼 신사"
 Q11420029	Lko	"요하시라 신사"
 # Source: ID "Kuil Shisha" (romanization)
 Q11420081	Lko	"시샤 신사"
-# Source: ID "Kuil Shikanjimasumiyoshi (Konohana-ku)" (romanization)
+# Source: ID "Kuil Shikanjima Sumiyoshi" (romanization)
 Q11420142	Lko	"시칸지마스미요시 신사"
 # Source: ID "Kuil Kaiten" (romanization)
 Q11420193	Lko	"카이텐 신사"
@@ -33542,8 +33542,6 @@ Q135039134	Lko	"유케노 신사"
 Q135039135	Lko	"쓰루유미시마노 신사"
 # Source: ID "Kuil Okiheno" (romanization)
 Q135039136	Lko	"오키헤노 신사"
-# Source: ID "Kuil Mitono" (romanization)
-Q135039137	Lko	"미토노 신사"
 # Source: ID "Kuil Uhano" (romanization)
 Q135039138	Lko	"우하노 신사"
 # Source: ID "Kuil Katsurano" (romanization)
@@ -34150,8 +34148,6 @@ Q135039521	Lko	"쿠니하라노 신사"
 Q135039522	Lko	"무쓰시노 신사"
 # Source: ID "Kuil Takamuno" (romanization)
 Q135039524	Lko	"타카무노 신사"
-# Source: ID "Kuil Uchiuchino" (romanization)
-Q135039525	Lko	"우치우치노 신사"
 # Source: ID "Kuil Takeno" (romanization)
 Q135039526	Lko	"타케노 신사"
 # Source: ID "Kuil Katayamano" (romanization)
@@ -34330,8 +34326,6 @@ Q135039630	Lko	"시라사하노 신사"
 Q135039631	Lko	"토요쓰미노 신사"
 # Source: ID "Kuil Fujino" (romanization)
 Q135039633	Lko	"후지노 신사"
-# Source: ID "Kuil Marokono" (romanization)
-Q135039634	Lko	"마로코노 신사"
 # Source: ID "Kuil Momosaha" (romanization)
 Q135039635	Lko	"모모사하 신사"
 # Source: ID "Kuil Hafuhimeno-" (romanization)
@@ -34342,8 +34336,6 @@ Q135039637	Lko	"이카무히메노 신사"
 Q135039638	Lko	"사키타마히메노 신사"
 # Source: ID "Kuil Takemikakano-" (romanization)
 Q135039639	Lko	"타케미카카노 신사"
-# Source: ID "Kuil Monoiminano-" (romanization)
-Q135039640	Lko	"모노이미나노 신사"
 # Source: ID "Kuil Ihare-" (romanization)
 Q135039641	Lko	"이하레 신사"
 # Source: ID "Kuil Hayashino-" (romanization)
@@ -34906,8 +34898,6 @@ Q135039982	Lko	"이히토요히메노 신사"
 Q135039983	Lko	"카리타미네노 신사"
 # Source: ID "Kuil Takano" (romanization)
 Q135039984	Lko	"타카노 신사"
-# Source: ID "Kuil Sakueno" (romanization)
-Q135039985	Lko	"사쿠에노 신사"
 # Source: ID "Kuil Sukino" (romanization)
 Q135039986	Lko	"스키노 신사"
 # Source: ID "Kuil Ihakami-" (romanization)
@@ -35802,14 +35792,10 @@ Q135040582	Lko	"나쿠노 신사"
 Q135040583	Lko	"미소타니노 신사"
 # Source: ID "Kuil Kuniharano" (romanization)
 Q135040584	Lko	"쿠니하라노 신사"
-# Source: ID "Kuil Aminono" (romanization)
-Q135040585	Lko	"아미노노 신사"
 # Source: ID "Kuil Echino" (romanization)
 Q135040586	Lko	"에치노 신사"
 # Source: ID "Kuil Ohonono" (romanization)
 Q135040587	Lko	"오호노노 신사"
-# Source: ID "Kuil Takanono" (romanization)
-Q135040588	Lko	"타카노노 신사"
 # Source: ID "Kuil Ikuwauheno" (romanization)
 Q135040589	Lko	"이쿠와우헤노 신사"
 # Source: ID "Kuil Shifuhino" (romanization)
@@ -37008,8 +36994,6 @@ Q135041527	Lko	"시마오호쿠니타마노 신사"
 Q135041528	Lko	"노리토노 신사"
 # Source: ID "Kuil Amenomorohanomikoto" (romanization)
 Q135041529	Lko	"아메노모로하노미코토 신사"
-# Source: ID "Kuil Amanotakutsutamano-" (romanization)
-Q135041530	Lko	"아마노타쿠쓰타마노 신사"
 # Source: ID "Kuil Unutono" (romanization)
 Q135041531	Lko	"우누토노 신사"
 # Source: ID "Kuil Wohirano-" (romanization)
@@ -37084,6 +37068,8 @@ Q135045392	Lko	"사루타히코 신사"
 Q135045395	Lko	"카모하라 신사"
 # Source: ID "Kuil Ottokousha (Yamashiro)" (romanization)
 Q135068635	Lko	"오토코우샤 신사"
+# Source: ID "Kuil Izumo Inoe" (romanization)
+Q135068645	Lko	"이즈모이노에 신사"
 # Source: ID "Kuil Inoue (Otagi)" (romanization)
 Q135068646	Lko	"이노우에 신사"
 # Source: ID "Kuil Izumotakano (Otagi)" (romanization)
@@ -37228,8 +37214,8 @@ Q135069129	Lko	"야마구치 신사"
 Q135069130	Lko	"카스가 신사"
 # Source: ID "Kuil Sakamonshin" (romanization)
 Q135069131	Lko	"사카몬신 신사"
-# Source: ID "Kuil Teniwato" (romanization)
-Q135069132	Lko	"테니와토 신사"
+# Source: ID "Kuil Ama-no-Iwato" (romanization)
+Q135069132	Lko	"아마노이와토 신사"
 # Source: ID "Kuil Kuninotokotachi" (romanization)
 Q135069135	Lko	"쿠니노토코타치 신사"
 # Source: ID "Kuil Shinmei" (romanization)
@@ -37358,8 +37344,6 @@ Q135069358	Lko	"야마구치하치만 신사"
 Q135069360	Lko	"하쿠산 신사"
 # Source: ID "Kuil Hachiman‑sha" (romanization)
 Q135069361	Lko	"하치만샤 신사"
-# Source: ID "Kuil Kinshin" (romanization)
-Q135069362	Lko	"킨신 신사"
 # Source: ID "Kuil Kinshinshakyūseki" (romanization)
 Q135069364	Lko	"킨신샤큐세키 신사"
 # Source: ID "Kuil Keikō Tennō" (romanization)
@@ -37750,8 +37734,6 @@ Q135069924	Lko	"나라모토 신사"
 Q135069927	Lko	"카사노 신사"
 # Source: ID "Kuil Noka" (romanization)
 Q135069928	Lko	"노카 신사"
-# Source: ID "Kuil Noka (Kaga)" (romanization)
-Q135069930	Lko	"노카 신사"
 # Source: ID "Kuil Kasano" (romanization)
 Q135069931	Lko	"카사노 신사"
 # Source: ID "Kuil Kasano (Kaga)" (romanization)
@@ -37940,8 +37922,8 @@ Q135070060	Lko	"사라키무라효즈 신사"
 Q135070061	Lko	"히노데 신사"
 # Source: ID "Kuil Hinode (Tajima)" (romanization)
 Q135070062	Lko	"히노데 신사"
-# Source: ID "Kuil Dainamabuheishushin" (romanization)
-Q135070063	Lko	"다이나마부헤이슈신 신사"
+# Source: ID "Kuil Ōube Hyoju (Okuno)" (romanization)
+Q135070063	Lko	"오우베효주 신사"
 # Source: ID "Kuil Dainamabuheishushin (Tajima)" (romanization)
 Q135070064	Lko	"다이나마부헤이슈신 신사"
 # Source: ID "Kuil Ifukube" (romanization)
@@ -38102,8 +38084,6 @@ Q135070156	Lko	"오오토시 신사"
 Q135070157	Lko	"오오토시 신사"
 # Source: ID "Kuil Otoshi" (romanization)
 Q135070158	Lko	"오토시 신사"
-# Source: ID "Kuil Yamabe" (romanization)
-Q135070160	Lko	"야마베 신사"
 # Source: ID "Kuil Inari" (romanization)
 Q135070164	Lko	"이나리 신사"
 # Source: ID "Kuil Myouken" (romanization)
@@ -38262,8 +38242,8 @@ Q135070280	Lko	"타케카미 신사"
 Q135070281	Lko	"텐코야사카 신사"
 # Source: ID "Kuil Hachisu" (romanization)
 Q135070282	Lko	"하치스 신사"
-# Source: ID "Kuil Shouhachihatamiya" (romanization)
-Q135070283	Lko	"쇼우하치하타미야 신사"
+# Source: ID "Kuil Shō Hachimangū" (romanization)
+Q135070283	Lko	"쇼하치만구 신사"
 # Source: ID "Kuil Takehiro" (romanization)
 Q135070285	Lko	"타케히로 신사"
 # Source: ID "Kuil Hachidai Ryūō" (romanization)
@@ -38290,8 +38270,6 @@ Q135070298	Lko	"스기오 신사"
 Q135070299	Lko	"나카우치 신사"
 # Source: ID "Kuil Hachiman" (romanization)
 Q135070301	Lko	"하치만 신사"
-# Source: ID "Kuil Hachikurahime" (romanization)
-Q135070302	Lko	"하치쿠라히메 신사"
 # Source: ID "Kuil Toyotamahime" (romanization)
 Q135070303	Lko	"토요타마히메 신사"
 # Source: ID "Kuil Sarutahiko" (romanization)
@@ -38390,8 +38368,6 @@ Q135070361	Lko	"나카쓰 신사"
 Q135070363	Lko	"시라사하치만 신사"
 # Source: ID "Kuil Koroku" (romanization)
 Q135070367	Lko	"코로쿠 신사"
-# Source: ID "Kuil Shihahikono" (romanization)
-Q135091221	Lko	"시하히코노 신사"
 # Source: ID "Kuil Komagata" (romanization)
 Q135092151	Lko	"코마가타 신사"
 # Source: ID "Kuil Nomino" (romanization)
@@ -42814,8 +42790,6 @@ Q135179806	Lko	"야마노모리 신사"
 Q135179882	Lko	"타나카 신사"
 # Source: ID "Kuil Mahataki" (romanization)
 Q135179885	Lko	"마하타키 신사"
-# Source: ID "Kuil Okadakuni" (romanization)
-Q135179912	Lko	"오카다쿠니 신사"
 # Source: ID "Kuil Tanaka (Fushimi)" (romanization)
 Q135180033	Lko	"타나카 신사"
 # Source: ID "Kuil Asukata" (romanization)
@@ -43174,26 +43148,8 @@ Q135187282	Lko	"와리라 신사"
 Q135187347	Lko	"카미치카마 신사"
 # Source: ID "Kuil Neno" (romanization)
 Q135189824	Lko	"네노 신사"
-# Source: ID "Kuil Shionoe" (romanization)
-Q135190014	Lko	"시오노에 신사"
-# Source: ID "Kuil Hachiman" (romanization)
-Q135190015	Lko	"하치만 신사"
-# Source: ID "Kuil Ishitsukuri" (romanization)
-Q135190056	Lko	"이시쓰쿠리 신사"
-# Source: ID "Kuil Ide" (romanization)
-Q135190089	Lko	"이데 신사"
-# Source: ID "Kuil Shinmei" (romanization)
-Q135190090	Lko	"신메이 신사"
-# Source: ID "Kuil Kumano" (romanization)
-Q135190100	Lko	"쿠마노 신사"
 # Source: ID "Kuil Hata" (romanization)
 Q135190107	Lko	"하타 신사"
-# Source: ID "Kuil Tenjin-sha" (romanization)
-Q135190111	Lko	"텐진샤 신사"
-# Source: ID "Kuil Kunihara" (romanization)
-Q135190112	Lko	"쿠니하라 신사"
-# Source: ID "Kuil Hakusan" (romanization)
-Q135190114	Lko	"하쿠산 신사"
 # Source: ID "Kuil Hikami Anego" (romanization)
 Q135190176	Lko	"히카미아네고 신사"
 # Source: ID "Kuil Nomi" (romanization)
@@ -43336,6 +43292,8 @@ Q135193034	Lko	"쿠니타마 신사"
 Q135193035	Lko	"우라모리 신사"
 # Source: ID "Kuil Torakashiha okumiya" (romanization)
 Q135193100	Lko	"토라카시하오쿠미야 신사"
+# Source: ID "Kuil Kuniichigi (Morito, Sakado)" (romanization)
+Q135193123	Lko	"쿠니이치기 신사"
 # Source: ID "Kuil Tanaka" (romanization)
 Q135193143	Lko	"타나카 신사"
 # Source: ID "Kuil Kanbe" (romanization)
@@ -43376,8 +43334,6 @@ Q135193313	Lko	"아다치 신사"
 Q135193321	Lko	"미야모토묘진 신사"
 # Source: ID "Kuil Kitano Tenjinsha sessha" (romanization)
 Q135193332	Lko	"키타노텐진샤세샤 신사"
-# Source: ID "Kuil Kuniichigi (Morito, Sakado)" (romanization)
-Q135193338	Lko	"쿠니이치기 신사"
 # Source: ID "Kuil Tamashiki" (romanization)
 Q135193340	Lko	"타마시키 신사"
 # Source: ID "Kuil Kisai Castle Ruins" (romanization)
@@ -43440,8 +43396,6 @@ Q135193479	Lko	"칸다 신사"
 Q135193486	Lko	"히요시타이샤오쿠미야 신사"
 # Source: ID "Kuil Sakunado" (romanization)
 Q135193493	Lko	"사쿠나도 신사"
-# Source: ID "Kuil Kawata (Tonmiya)" (romanization)
-Q135193501	Lko	"카와타 신사"
 # Source: ID "Kuil Ihimichi" (romanization)
 Q135193504	Lko	"이히미치 신사"
 # Source: ID "Kuil Īmichi" (romanization)
@@ -43484,10 +43438,6 @@ Q135193540	Lko	"카루노 신사"
 Q135193541	Lko	"카루노 신사"
 # Source: ID "Kuil Chōsun" (romanization)
 Q135193605	Lko	"초슨 신사"
-# Source: ID "Kuil Karuno" (romanization)
-Q135193619	Lko	"카루노 신사"
-# Source: ID "Kuil Karuno" (romanization)
-Q135193620	Lko	"카루노 신사"
 # Source: ID "Kuil Sakada Miyaoka" (romanization)
 Q135193623	Lko	"사카다미야오카 신사"
 # Source: ID "Kuil Hikone" (romanization)
@@ -44036,10 +43986,6 @@ Q135194822	Lko	"노미즈치 신사"
 Q135194823	Lko	"카나야마히코 신사"
 # Source: ID "Kuil Kasano" (romanization)
 Q135194824	Lko	"카사노 신사"
-# Source: ID "Kuil Kasano" (romanization)
-Q135194830	Lko	"카사노 신사"
-# Source: ID "Kuil Kasano" (romanization)
-Q135194831	Lko	"카사노 신사"
 # Source: ID "Kuil Seto Hiko (Kashima)" (romanization)
 Q135194856	Lko	"세토히코 신사"
 # Source: ID "Kuil Seto Hiko (Hakui)" (romanization)
@@ -44186,8 +44132,6 @@ Q135194956	Lko	"모토오가미 신사"
 Q135194957	Lko	"아사이 신사"
 # Source: ID "Kuil Asai (Ishizutsumi, Takaoka)" (romanization)
 Q135194958	Lko	"아사이 신사"
-# Source: ID "Kuil Futagami Imizu" (romanization)
-Q135194960	Lko	"후타가미이미즈 신사"
 # Source: ID "Kuil Michino (Imizu)" (romanization)
 Q135194963	Lko	"미치노 신사"
 # Source: ID "Kuil Michino" (romanization)
@@ -44518,8 +44462,6 @@ Q135195353	Lko	"키리하라 신사"
 Q135195362	Lko	"히노데 신사"
 # Source: ID "Kuil Hinode (Minamio, Tantō)" (romanization)
 Q135195363	Lko	"히노데 신사"
-# Source: ID "Kuil Ōube Hyoju (Okuno)" (romanization)
-Q135195376	Lko	"오우베효주 신사"
 # Source: ID "Kuil Ōube Hyoju (Tantō)" (romanization)
 Q135195377	Lko	"오우베효주 신사"
 # Source: ID "Kuil Amuka" (romanization)
@@ -48258,136 +48200,48 @@ Q135260995	Lko	"스가와라 신사"
 Q135260997	Lko	"타카오 신사"
 # Source: ID "Kuil Kuhiwokano" (romanization)
 Q135270092	Lko	"쿠히오카노 신사"
-# Source: ID "Kuil Mitsuno" (romanization)
-Q135270101	Lko	"미쓰노 신사"
 # Source: ID "Kuil Ihatano" (romanization)
 Q135270104	Lko	"이하타노 신사"
-# Source: ID "Kuil Naratsuhiko" (romanization)
-Q135270108	Lko	"나라쓰히코 신사"
-# Source: ID "Kuil Taka-" (romanization)
-Q135270109	Lko	"타카 신사"
-# Source: ID "Kuil Asuka Kawakami-ni-Imasu Usutakihime-no-Mikoto" (romanization)
-Q135270112	Lko	"아스카카와카미니이마스우스타키히메노미코토 신사"
-# Source: ID "Kuil Kayanarumino" (romanization)
-Q135270113	Lko	"카야나루미노 신사"
 # Source: ID "Kuil Miino" (romanization)
 Q135270114	Lko	"미이노 신사"
-# Source: ID "Kuil Yoshinonoyamakuchino" (romanization)
-Q135270116	Lko	"요시노노야마쿠치노 신사"
 # Source: ID "Kuil Ishino" (romanization)
 Q135270117	Lko	"이시노 신사"
 # Source: ID "Kuil Soenomi Agata Imasu" (romanization)
 Q135270118	Lko	"소에노미아가타이마스 신사"
-# Source: ID "Kuil Ihatsutano-" (romanization)
-Q135270122	Lko	"이하쓰타노 신사"
-# Source: ID "Kuil Himekosono" (romanization)
-Q135270123	Lko	"히메코소노 신사"
 # Source: ID "Kuil Mishimakamono" (romanization)
 Q135270126	Lko	"미시마카모노 신사"
 # Source: ID "Kuil Iketano" (romanization)
 Q135270127	Lko	"이케타노 신사"
 # Source: ID "Kuil Wokatano" (romanization)
 Q135270129	Lko	"오카타노 신사"
-# Source: ID "Kuil Kamusakino" (romanization)
-Q135270136	Lko	"카무사키노 신사"
-# Source: ID "Kuil Kaharano-" (romanization)
-Q135270137	Lko	"카하라노 신사"
-# Source: ID "Kuil Inakino" (romanization)
-Q135270141	Lko	"이나키노 신사"
-# Source: ID "Kuil Morokuhano" (romanization)
-Q135270143	Lko	"모로쿠하노 신사"
-# Source: ID "Kuil Wokuchino" (romanization)
-Q135270144	Lko	"오쿠치노 신사"
-# Source: ID "Kuil Katayamano" (romanization)
-Q135270145	Lko	"카타야마노 신사"
-# Source: ID "Kuil Ohomeno" (romanization)
-Q135270146	Lko	"오호메노 신사"
-# Source: ID "Kuil Hitsushino" (romanization)
-Q135270149	Lko	"히쓰시노 신사"
-# Source: ID "Kuil Hananakano" (romanization)
-Q135270215	Lko	"하나나카노 신사"
-# Source: ID "Kuil Nakayamano" (romanization)
-Q135270218	Lko	"나카야마노 신사"
-# Source: ID "Kuil Arakashi" (romanization)
-Q135270258	Lko	"아라카시 신사"
 # Source: ID "Kuil Hosorokino" (romanization)
 Q135270265	Lko	"호소로키노 신사"
-# Source: ID "Kuil Atagono" (romanization)
-Q135270267	Lko	"아타고노 신사"
-# Source: ID "Kuil Hyōzu" (romanization)
-Q135270268	Lko	"효즈 신사"
 # Source: ID "Kuil Amano" (romanization)
 Q135270269	Lko	"아마노 신사"
-# Source: ID "Kuil Isakino" (romanization)
-Q135270270	Lko	"이사키노 신사"
 # Source: ID "Kuil Kuhaharano" (romanization)
 Q135270271	Lko	"쿠하하라노 신사"
-# Source: ID "Kuil Ihare-" (romanization)
-Q135270275	Lko	"이하레 신사"
-# Source: ID "Kuil Hotsusakeno-" (romanization)
-Q135270276	Lko	"호쓰사케노 신사"
-# Source: ID "Kuil Achiko" (romanization)
-Q135270277	Lko	"아치코 신사"
 # Source: ID "Kuil Ihatewakeno-" (romanization)
 Q135270278	Lko	"이하테와케노 신사"
 # Source: ID "Kuil Takeishitsukino-" (romanization)
 Q135270279	Lko	"타케이시쓰키노 신사"
-# Source: ID "Kuil Sukihoko-" (romanization)
-Q135270280	Lko	"스키호코 신사"
-# Source: ID "Kuil Monoiminano-" (romanization)
-Q135270282	Lko	"모노이미나노 신사"
-# Source: ID "Kuil Kurotonano" (romanization)
-Q135270283	Lko	"쿠로토나노 신사"
-# Source: ID "Kuil Yamanashiwokano" (romanization)
-Q135270284	Lko	"야마나시오카노 신사"
 # Source: ID "Kuil Homino" (romanization)
 Q135270285	Lko	"호미노 신사"
 # Source: ID "Kuil Sakuno" (romanization)
 Q135270286	Lko	"사쿠노 신사"
-# Source: ID "Kuil Asamano" (romanization)
-Q135270287	Lko	"아사마노 신사"
-# Source: ID "Kuil Takaheyano" (romanization)
-Q135270288	Lko	"타카헤야노 신사"
 # Source: ID "Kuil Hokotsukino" (romanization)
 Q135270289	Lko	"호코쓰키노 신사"
-# Source: ID "Kuil Hihitano" (romanization)
-Q135270290	Lko	"히히타노 신사"
-# Source: ID "Kuil Takehimeno" (romanization)
-Q135270291	Lko	"타케히메노 신사"
 # Source: ID "Kuil Miyameno" (romanization)
 Q135270292	Lko	"미야메노 신사"
 # Source: ID "Kuil Iharino" (romanization)
 Q135270294	Lko	"이하리노 신사"
-# Source: ID "Kuil Oi" (romanization)
-Q135270296	Lko	"오이 신사"
-# Source: ID "Kuil Fuchiuchino" (romanization)
-Q135270297	Lko	"후치우치노 신사"
 # Source: ID "Kuil Kahakareno" (romanization)
 Q135270298	Lko	"카하카레노 신사"
-# Source: ID "Kuil Kaneno" (romanization)
-Q135270307	Lko	"카네노 신사"
-# Source: ID "Kuil Watano" (romanization)
-Q135270308	Lko	"와타노 신사"
-# Source: ID "Kuil Shifukahano" (romanization)
-Q135270309	Lko	"시후카하노 신사"
-# Source: ID "Kuil Ohonokino" (romanization)
-Q135270310	Lko	"오호노키노 신사"
-# Source: ID "Kuil Woharino" (romanization)
-Q135270311	Lko	"오하리노 신사"
 # Source: ID "Kuil Shimotsuchikamano" (romanization)
 Q135270312	Lko	"시모쓰치카마노 신사"
-# Source: ID "Kuil Takamuno" (romanization)
-Q135270313	Lko	"타카무노 신사"
 # Source: ID "Kuil Kaharano" (romanization)
 Q135270314	Lko	"카하라노 신사"
-# Source: ID "Kuil Harinano" (romanization)
-Q135270315	Lko	"하리나노 신사"
-# Source: ID "Kuil Mononoheno" (romanization)
-Q135270316	Lko	"모노노헤노 신사"
 # Source: ID "Kuil Hikowakamikono" (romanization)
 Q135270317	Lko	"히코와카미코노 신사"
-# Source: ID "Kuil Wihanano" (romanization)
-Q135270318	Lko	"위하나노 신사"
 # Source: ID "Kuil Futakata" (romanization)
 Q135270328	Lko	"후타카타 신사"
 # Source: ID "Kuil Sami‑no‑Hyōzu" (romanization)
@@ -48396,66 +48250,26 @@ Q135270329	Lko	"사미노효즈 신사"
 Q135270331	Lko	"후스노 신사"
 # Source: ID "Kuil Yasokono" (romanization)
 Q135270351	Lko	"야소코노 신사"
-# Source: ID "Kuil Kamutano" (romanization)
-Q135270353	Lko	"카무타노 신사"
 # Source: ID "Kuil Ikahono" (romanization)
 Q135270416	Lko	"이카호노 신사"
-# Source: ID "Kuil Fusawokino" (romanization)
-Q135270417	Lko	"후사오키노 신사"
-# Source: ID "Kuil Kutsumino" (romanization)
-Q135270418	Lko	"쿠쓰미노 신사"
-# Source: ID "Kuil Hiroseno" (romanization)
-Q135270419	Lko	"히로세노 신사"
-# Source: ID "Kuil Yanakihara" (romanization)
-Q135270420	Lko	"야나키하라 신사"
-# Source: ID "Kuil Hikitachikarano-" (romanization)
-Q135270421	Lko	"히키타치카라노 신사"
-# Source: ID "Kuil Ametsuseno-" (romanization)
-Q135270422	Lko	"아메쓰세노 신사"
 # Source: ID "Kuil Tamamorono" (romanization)
 Q135270423	Lko	"타마모로노 신사"
-# Source: ID "Kuil Ohokuninushino" (romanization)
-Q135270424	Lko	"오호쿠니누시노 신사"
 # Source: ID "Kuil Makatano" (romanization)
 Q135270425	Lko	"마카타노 신사"
-# Source: ID "Kuil Fukomino" (romanization)
-Q135270426	Lko	"후코미노 신사"
-# Source: ID "Kuil Sakusano" (romanization)
-Q135270427	Lko	"사쿠사노 신사"
-# Source: ID "Kuil Noshirono" (romanization)
-Q135270428	Lko	"노시로노 신사"
-# Source: ID "Kuil Kutamino" (romanization)
-Q135270429	Lko	"쿠타미노 신사"
 # Source: ID "Kuil Nimasukarakuniitateno" (romanization)
 Q135270430	Lko	"니마스카라쿠니이타테노 신사"
 # Source: ID "Kuil Yamasano" (romanization)
 Q135270431	Lko	"야마사노 신사"
-# Source: ID "Kuil Itakino" (romanization)
-Q135270432	Lko	"이타키노 신사"
 # Source: ID "Kuil Kumeno" (romanization)
 Q135270433	Lko	"쿠메노 신사"
 # Source: ID "Kuil Wakasuserihimeno" (romanization)
 Q135270434	Lko	"와카스세리히메노 신사"
 # Source: ID "Kuil Nihehimeno" (romanization)
 Q135270435	Lko	"니헤히메노 신사"
-# Source: ID "Kuil Sahime-" (romanization)
-Q135270436	Lko	"사히메 신사"
-# Source: ID "Kuil Hiyakurakuno" (romanization)
-Q135270437	Lko	"히야쿠라쿠노 신사"
 # Source: ID "Kuil Yamatoookuni-" (romanization)
 Q135270439	Lko	"야마토오오쿠니 신사"
-# Source: ID "Kuil Imuheno" (romanization)
-Q135270440	Lko	"이무헤노 신사"
-# Source: ID "Kuil Amatsunumahikono" (romanization)
-Q135270441	Lko	"아마쓰누마히코노 신사"
-# Source: ID "Kuil Hihameno-" (romanization)
-Q135270442	Lko	"히하메노 신사"
-# Source: ID "Kuil Iwatowakeyakurahimeno" (romanization)
-Q135270443	Lko	"이와토와케야쿠라히메노 신사"
 # Source: ID "Kuil Ama-no-iwato-wake-toyotamahimeno" (romanization)
 Q135270444	Lko	"아마노이와토와케토요타마히메노 신사"
-# Source: ID "Kuil Wanasaifusono" (romanization)
-Q135270445	Lko	"와나사이후소노 신사"
 # Source: ID "Kuil Ohotoshino" (romanization)
 Q135288221	Lko	"오호토시노 신사"
 # Source: ID "Kuil Itsunahimeno" (romanization)
@@ -60148,8 +59962,6 @@ Q135505777	Lko	"타나베 신사"
 Q135505779	Lko	"타다스 신사"
 # Source: ID "Kuil Sagi" (romanization)
 Q135505781	Lko	"사기 신사"
-# Source: ID "Kuil Mii" (romanization)
-Q135505912	Lko	"미이 신사"
 # Source: ID "Kuil Kashima (Ishinomaki)" (romanization)
 Q135506078	Lko	"카시마 신사"
 # Source: ID "Kuil Kashima (Igu)" (romanization)
@@ -60216,6 +60028,12 @@ Q135552185	Lko	"오야마스와진자 신사"
 Q135732	Lko	"오아가타 신사"
 # Source: ID "Kuil Katō" (romanization)
 Q137707	Lko	"카토 신사"
+# Source: ID "Kuil Hachiman" (romanization)
+Q137721136	Lko	"하치만 신사"
+# Source: ID "Kuil Hachiman" (romanization)
+Q137721158	Lko	"하치만 신사"
+# Source: ID "Kuil Hachiman" (romanization)
+Q137721164	Lko	"하치만 신사"
 # Source: ID "Kuil Tōgō" (romanization)
 Q1384780	Lko	"토고 신사"
 # Source: ID "Wihara Rokudōchinnō-ji" (romanization)
@@ -66796,6 +66614,8 @@ Q104093828	Lko	"팔번조문신사"
 Q104679794	Lko	"장창사"
 # Source: JA "三崁店社" (hanja reading)
 Q10528152	Lko	"삼감점사"
+# Source: JA "貴船まつり" (hanja reading)
+Q105338690	Lko	"귀선마쓰리"
 # Source: JA "性宗寺" (hanja reading)
 Q105406088	Lko	"성종사"
 # Source: JA "誓願寺" (hanja reading)
@@ -67230,8 +67050,6 @@ Q106981140	Lko	"안양사"
 Q106981157	Lko	"안양사"
 # Source: JA "安養寺" (hanja reading)
 Q106981159	Lko	"안양사"
-# Source: JA "歓喜院 聖天堂" (hanja reading)
-Q107020328	Lko	"환희원성천당"
 # Source: JA "円覚寺舎利殿" (hanja reading)
 Q107020330	Lko	"엔각사사리전"
 # Source: JA "久能山東照宮社殿" (hanja reading)
@@ -67554,6 +67372,8 @@ Q111043875	Lko	"엔복사"
 Q111097518	Lko	"관정사"
 # Source: JA "釈迦尊寺" (hanja reading)
 Q111097991	Lko	"석가존사"
+# Source: JA "高井和大" (hanja reading)
+Q111114146	Lko	"고정화대"
 # Source: JA "金剛院" (hanja reading)
 Q111175197	Lko	"금강원"
 # Source: JA "金剛院" (hanja reading)
@@ -67668,6 +67488,8 @@ Q112144530	Lko	"조원사태전시"
 Q112144782	Lko	"용원원"
 # Source: JA "稲荷神社" (hanja reading)
 Q112148924	Lko	"도하신사"
+# Source: JA "高井大輔" (hanja reading)
+Q112239137	Lko	"고정대보"
 # Source: JA "瑞忍寺" (hanja reading)
 Q112240089	Lko	"서인사"
 # Source: JA "常瑞寺" (hanja reading)
@@ -68522,6 +68344,8 @@ Q11442600	Lko	"천성사안화전시"
 Q11442758	Lko	"천소팔번신사"
 # Source: JA "天津神明宮" (hanja reading)
 Q11442795	Lko	"천진신명궁"
+# Source: JA "天社土御門神道" (hanja reading)
+Q11443187	Lko	"천사토어문신도"
 # Source: JA "勝広寺" (hanja reading)
 Q114436909	Lko	"승광사"
 # Source: JA "太山寺成就院庭園" (hanja reading)
@@ -68718,8 +68542,8 @@ Q11455800	Lko	"부광사대판시"
 Q114564455	Lko	"승군사"
 # Source: JA "富岡八幡宮" (hanja reading)
 Q11456882	Lko	"부강팔번궁"
-# Source: JA "富貴寺 (磯城郡川西町)" (hanja reading)
-Q11457313	Lko	"부귀사기성군천서정"
+# Source: JA "富貴寺" (hanja reading)
+Q11457313	Lko	"부귀사"
 # Source: JA "仁勝寺" (hanja reading)
 Q114580418	Lko	"인승사"
 # Source: JA "寺町寺院群" (hanja reading)
@@ -70058,6 +69882,8 @@ Q11632499	Lko	"호국사"
 Q11633767	Lko	"풍영도하신사"
 # Source: JA "貞昌院" (hanja reading)
 Q11634525	Lko	"정창원"
+# Source: JA "貴船神社 (曖昧さ回避)" (hanja reading)
+Q11634811	Lko	"귀선신사애매사회피"
 # Source: JA "賢林寺" (hanja reading)
 Q11635090	Lko	"현림사"
 # Source: JA "賢沼寺" (hanja reading)
@@ -78870,8 +78696,6 @@ Q134736442	Lko	"장명사"
 Q134736443	Lko	"묘혜사"
 # Source: JA "東福寺" (hanja reading)
 Q134736444	Lko	"동복사"
-# Source: JA "新光寺" (hanja reading)
-Q134736445	Lko	"신광사"
 # Source: JA "佛眼寺" (hanja reading)
 Q134736446	Lko	"불안사"
 # Source: JA "壽昌寺" (hanja reading)
@@ -85294,6 +85118,8 @@ Q134986894	Lko	"가무신사소전원시"
 Q134986898	Lko	"녹도신사이동시"
 # Source: JA "春日神社 (各務原市上戸町)" (hanja reading)
 Q134986905	Lko	"춘일신사각무원시상호정"
+# Source: JA "貴布祢神社神楽" (hanja reading)
+Q134986916	Lko	"귀포니신사신악"
 # Source: JA "新川金刀比羅神社" (hanja reading)
 Q134986920	Lko	"신천금도비라신사"
 # Source: JA "遠州の熊野三山" (hanja reading)
@@ -87104,8 +86930,6 @@ Q135039718	Lko	"추방신사광야신사"
 Q135041089	Lko	"합사염야신사"
 # Source: JA "井上社" (hanja reading)
 Q135045383	Lko	"정상사"
-# Source: JA "出雲井於神社" (hanja reading)
-Q135068645	Lko	"출운정어신사"
 # Source: JA "神館飯野高市神社" (hanja reading)
 Q135069242	Lko	"신관반야고시신사"
 # Source: JA "清水神社" (hanja reading)
@@ -90138,8 +89962,6 @@ Q135186783	Lko	"지저신사니합사"
 Q135186948	Lko	"팔번신사수북정"
 # Source: JA "神明社 (石作神社)" (hanja reading)
 Q135187145	Lko	"신명사석작신사"
-# Source: JA "神明社(石作神社)" (hanja reading)
-Q135190058	Lko	"신명사석작신사"
 # Source: JA "熱田神宮摂社御田神社" (hanja reading)
 Q135190151	Lko	"열전신궁섭사어전신사"
 # Source: JA "七所社摂社御田神社" (hanja reading)
@@ -90164,6 +89986,8 @@ Q135193077	Lko	"제노목팔번신사"
 Q135193102	Lko	"청위신사구사지"
 # Source: JA "高負比古神社 旧社地" (hanja reading)
 Q135193110	Lko	"고부비고신사구사지"
+# Source: JA "物部天神社・國渭地祇神社・天満天神(北野天神社)の合祀" (hanja reading)
+Q135193122	Lko	"물부천신사국위지기신사천만천신북야천신사노합사"
 # Source: JA "宮目神社 旧社地" (hanja reading)
 Q135193130	Lko	"궁목신사구사지"
 # Source: JA "八幡神社(三ヶ尻)" (hanja reading)
@@ -90176,8 +90000,6 @@ Q135193276	Lko	"황대신궁오삼신사"
 Q135193315	Lko	"족립신사구사지"
 # Source: JA "伊波比神社 旧社地" (hanja reading)
 Q135193327	Lko	"이파비신사구사지"
-# Source: JA "物部天神社・國渭地祇神社・天満天神(北野天神社)の合祀" (hanja reading)
-Q135193336	Lko	"물부천신사국위지기신사천만천신북야천신사노합사"
 # Source: JA "小被神社 旧社地" (hanja reading)
 Q135193348	Lko	"소피신사구사지"
 # Source: JA "長幡部神社 旧社地" (hanja reading)
@@ -106774,6 +106596,8 @@ Q136845921	Lko	"소진신사"
 Q136866207	Lko	"엄도신사"
 # Source: JA "達谷西光寺" (hanja reading)
 Q136945846	Lko	"달곡서광사"
+# Source: JA "照島神社" (hanja reading)
+Q136947611	Lko	"조도신사"
 # Source: JA "子安神社" (hanja reading)
 Q137010076	Lko	"자안신사"
 # Source: JA "松高庵" (hanja reading)
@@ -106832,8 +106656,6 @@ Q137537998	Lko	"적총신명사"
 Q137569609	Lko	"장원사동해시"
 # Source: JA "天澤院" (hanja reading)
 Q137612204	Lko	"천택원"
-# Source: JA "長田神社" (hanja reading)
-Q137637037	Lko	"장전신사"
 # Source: JA "一乗寺" (hanja reading)
 Q137637075	Lko	"일승사"
 # Source: JA "法観寺" (hanja reading)
@@ -106910,8 +106732,6 @@ Q137711190	Lko	"고덕원"
 Q137716583	Lko	"어악신사"
 # Source: JA "十二柱神社" (hanja reading)
 Q137716904	Lko	"십이주신사"
-# Source: JA "八幡神社" (hanja reading)
-Q137721136	Lko	"팔번신사"
 # Source: JA "飯綱神社" (hanja reading)
 Q137721144	Lko	"반강신사"
 # Source: JA "池田神社" (hanja reading)
@@ -106941,8 +106761,6 @@ Q137721156	Lko	"일월신사"
 # Source: JA "白山神社" (hanja reading)
 Q137721157	Lko	"백산신사"
 # Source: JA "八幡神社" (hanja reading)
-Q137721158	Lko	"팔번신사"
-# Source: JA "八幡神社" (hanja reading)
 Q137721159	Lko	"팔번신사"
 # Source: JA "八幡神社" (hanja reading)
 Q137721160	Lko	"팔번신사"
@@ -106952,8 +106770,6 @@ Q137721161	Lko	"팔번신사"
 Q137721162	Lko	"팔번신사"
 # Source: JA "八幡神社" (hanja reading)
 Q137721163	Lko	"팔번신사"
-# Source: JA "八幡神社" (hanja reading)
-Q137721164	Lko	"팔번신사"
 # Source: JA "御嶽神社" (hanja reading)
 Q137721165	Lko	"어악신사"
 # Source: JA "八坂神社" (hanja reading)
@@ -107120,6 +106936,8 @@ Q138358688	Lko	"심굴사"
 Q138367820	Lko	"호보사"
 # Source: JA "荳蘭社" (hanja reading)
 Q138388375	Lko	"두란사"
+# Source: JA "生嶋神社" (hanja reading)
+Q138388868	Lko	"생도신사"
 # Source: JA "正眼寺" (hanja reading)
 Q138411277	Lko	"정안사"
 # Source: JA "上善寺" (hanja reading)
@@ -107130,6 +106948,82 @@ Q138427611	Lko	"춘일신사천좌야시"
 Q138497691	Lko	"연승원"
 # Source: JA "箕曲中松原神社" (hanja reading)
 Q138502928	Lko	"기곡중송원신사"
+# Source: JA "松尾神社" (hanja reading)
+Q138527452	Lko	"송미신사"
+# Source: JA "長福寺" (hanja reading)
+Q138569873	Lko	"장복사"
+# Source: JA "壽社" (hanja reading)
+Q138625748	Lko	"수사"
+# Source: JA "玄光庵" (hanja reading)
+Q138641337	Lko	"현광암"
+# Source: JA "龍澤山保寿院" (hanja reading)
+Q138657811	Lko	"용택산보수원"
+# Source: JA "福島八幡宮" (hanja reading)
+Q138683940	Lko	"복도팔번궁"
+# Source: JA "岡湊神社" (hanja reading)
+Q138713330	Lko	"강주신사"
+# Source: JA "津賀田神社" (hanja reading)
+Q138715855	Lko	"진하전신사"
+# Source: JA "売布神社 (京丹後市網野町)" (hanja reading)
+Q138750064	Lko	"매포신사경단후시망야정"
+# Source: JA "鞍作廃寺" (hanja reading)
+Q138753480	Lko	"안작폐사"
+# Source: JA "鞍作寺" (hanja reading)
+Q138753491	Lko	"안작사"
+# Source: JA "宝徳寺" (hanja reading)
+Q138774937	Lko	"보덕사"
+# Source: JA "石垣宝来宝来神社" (hanja reading)
+Q138778326	Lko	"석원보래보래신사"
+# Source: JA "八坂神社" (hanja reading)
+Q138791340	Lko	"팔판신사"
+# Source: JA "白山神社" (hanja reading)
+Q138823448	Lko	"백산신사"
+# Source: JA "八幡神社" (hanja reading)
+Q138823544	Lko	"팔번신사"
+# Source: JA "白山神社" (hanja reading)
+Q138824077	Lko	"백산신사"
+# Source: JA "土橋八幡宮" (hanja reading)
+Q138834410	Lko	"토교팔번궁"
+# Source: JA "若宮八幡宮" (hanja reading)
+Q138840883	Lko	"약궁팔번궁"
+# Source: JA "住吉神社" (hanja reading)
+Q138840975	Lko	"주길신사"
+# Source: JA "杉山神社" (hanja reading)
+Q138841016	Lko	"삼산신사"
+# Source: JA "兼喜神社" (hanja reading)
+Q138847787	Lko	"겸희신사"
+# Source: JA "大國主神社" (hanja reading)
+Q138847807	Lko	"대국주신사"
+# Source: JA "白玉豊受稲荷神社" (hanja reading)
+Q138847819	Lko	"백옥풍수도하신사"
+# Source: JA "旭丘神社" (hanja reading)
+Q138853704	Lko	"욱구신사"
+# Source: JA "山王神社" (hanja reading)
+Q138853744	Lko	"산왕신사"
+# Source: JA "秋葉神社" (hanja reading)
+Q138853762	Lko	"추엽신사"
+# Source: JA "八瀬尾大権現" (hanja reading)
+Q138853776	Lko	"팔뢰미대권현"
+# Source: JA "荒田八幡宮 東随神" (hanja reading)
+Q138854007	Lko	"황전팔번궁동수신"
+# Source: JA "荒田八幡宮 西随神" (hanja reading)
+Q138854025	Lko	"황전팔번궁서수신"
+# Source: JA "荒田八幡宮 南随神" (hanja reading)
+Q138854050	Lko	"황전팔번궁남수신"
+# Source: JA "母智丘神社" (hanja reading)
+Q138855991	Lko	"모지구신사"
+# Source: JA "光明院" (hanja reading)
+Q138874224	Lko	"광명원"
+# Source: JA "岡本八幡神社" (hanja reading)
+Q138906160	Lko	"강본팔번신사"
+# Source: JA "岡本八幡神社" (hanja reading)
+Q138906597	Lko	"강본팔번신사"
+# Source: JA "鶏知住吉神社" (hanja reading)
+Q138914538	Lko	"계지주길신사"
+# Source: JA "金比羅神社" (hanja reading)
+Q138945581	Lko	"금비라신사"
+# Source: JA "光永寺" (hanja reading)
+Q138976991	Lko	"광영사"
 # Source: JA "平間寺" (hanja reading)
 Q1504465	Lko	"평간사"
 # Source: JA "蓮花寺" (hanja reading)
@@ -107612,6 +107506,8 @@ Q24876488	Lko	"용천원남어소시"
 Q24876759	Lko	"양광원"
 # Source: JA "中観音堂" (hanja reading)
 Q24877174	Lko	"중관음당"
+# Source: JA "新光寺" (hanja reading)
+Q24906764	Lko	"신광사"
 # Source: JA "甘縄神明神社" (hanja reading)
 Q2841005	Lko	"감승신명신사"
 # Source: JA "龍泉寺" (hanja reading)
@@ -109114,6 +109010,8 @@ Q60988511	Lko	"덕악사"
 Q60988643	Lko	"원창사"
 # Source: JA "安住寺" (hanja reading)
 Q60988661	Lko	"안주사"
+# Source: JA "天山神社" (hanja reading)
+Q60988677	Lko	"천산신사"
 # Source: JA "稲成神社" (hanja reading)
 Q60988699	Lko	"도성신사"
 # Source: JA "吉祥寺" (hanja reading)
@@ -109442,6 +109340,8 @@ Q85876686	Lko	"광부사"
 Q85876702	Lko	"광련사"
 # Source: JA "光西寺" (hanja reading)
 Q85876706	Lko	"광서사"
+# Source: JA "八海神社" (hanja reading)
+Q85876874	Lko	"팔해신사"
 # Source: JA "円融寺" (hanja reading)
 Q85877004	Lko	"엔융사"
 # Source: JA "勝覺寺" (hanja reading)
